@@ -12,11 +12,21 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public @Data class Estado implements Serializable {
+public @Data class Estado implements Serializable, Model {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String nome;
     private String UF;
+
+    @Override
+    public String[] getTitulosColunas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String[] getFiltros() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

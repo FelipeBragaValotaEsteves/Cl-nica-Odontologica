@@ -18,21 +18,29 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public @Data class Consulta implements Serializable {
+public @Data class Consulta implements Serializable, Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     @Column
     @Lob
     private String observacao;
     @ManyToOne
     @JoinColumn(name="dentista_id")
-    private Dentista dentista;
+    private Funcionario funcionario;
     @ManyToOne
     @JoinColumn(name="paciente_id")
     private Paciente paciente;
     private Float valor;
     @Enumerated(EnumType.STRING)
     private FormaPagamento formaPagamento;
+
+    public String[] getTitulosColunas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String[] getFiltros() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

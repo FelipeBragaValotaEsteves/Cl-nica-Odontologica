@@ -15,11 +15,11 @@ import lombok.Data;
 @Entity
 @Getter
 @Setter
-public @Data class RegistroConsulta implements Serializable {
+public @Data class RegistroConsulta implements Serializable, Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String descricao;
     @OneToOne
     @JoinColumn(name = "consulta_id")
@@ -27,4 +27,14 @@ public @Data class RegistroConsulta implements Serializable {
     @ManyToOne
     @JoinColumn(name = "prontuario_id")
     private Prontuario prontuario;
+
+    @Override
+    public String[] getTitulosColunas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String[] getFiltros() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

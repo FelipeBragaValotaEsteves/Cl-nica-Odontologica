@@ -14,7 +14,7 @@ import lombok.Data;
 @Entity
 @Getter
 @Setter
-public @Data class Prontuario implements Serializable {
+public @Data class Prontuario implements Serializable, Model {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -23,5 +23,15 @@ public @Data class Prontuario implements Serializable {
     @OneToOne
     @JoinColumn(name = "paciente_id")
     private Paciente paciente;
+
+    @Override
+    public String[] getTitulosColunas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public String[] getFiltros() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 }
