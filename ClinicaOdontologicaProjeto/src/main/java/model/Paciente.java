@@ -15,12 +15,12 @@ import lombok.Data;
 @Entity
 @Getter
 @Setter
-public @Data class Paciente implements Serializable {
+public @Data class Paciente implements Serializable, Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-     private String nome;
+    private Long id;
+    private String nome;
     private String cpf;
     private Date dataNascimento;
     private Endereco endereco;
@@ -33,4 +33,14 @@ public @Data class Paciente implements Serializable {
     @OneToOne
     @JoinColumn(name = "prontuario_id")
     private Prontuario prontuario;
+
+    @Override
+    public String[] getTitulosColunas() {
+        return new String[]{"Id", "Nome", "CPF", "Convenio"};
+    }
+
+    @Override
+    public String[] getFiltros() {
+        return new String[]{"Id", "Nome", "CPF"};
+    }
 }

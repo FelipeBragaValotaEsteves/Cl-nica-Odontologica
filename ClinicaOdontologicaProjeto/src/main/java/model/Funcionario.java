@@ -15,15 +15,23 @@ import lombok.Setter;
 @Getter
 @Setter
 public @Data
-class Funcionario implements Serializable {
+class Funcionario implements Serializable, Model {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     private String nome;
     private String rg;
     @OneToOne
     @JoinColumn(name = "login_id")
     private Login login;
+
+    public String[] getTitulosColunas() {
+        return new String[]{"id", "Nome"};
+    }
+
+    public String[] getFiltros() {
+        return new String[]{"id", "Nome", "RG"};
+    }
 }
