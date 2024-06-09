@@ -21,14 +21,21 @@ public @Data class Contato implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
     @Column(length = 200)
     private String informacao;
-    private Integer tipo;
     @ManyToOne
     @JoinColumn(name="paciente_id")
     private Paciente paciente;
     @Enumerated(EnumType.STRING)
     private TipoContato tipoContato;
+
+    public String[] getTitulosColunas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String[] getFiltros() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
