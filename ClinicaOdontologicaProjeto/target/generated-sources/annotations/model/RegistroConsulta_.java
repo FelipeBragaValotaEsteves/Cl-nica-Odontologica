@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import model.Consulta;
 import model.Prontuario;
 
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-06-08T23:01:37", comments="EclipseLink-2.7.12.v20230209-rNA")
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-06-09T18:14:46", comments="EclipseLink-2.7.12.v20230209-rNA")
 @StaticMetamodel(RegistroConsulta.class)
 public class RegistroConsulta_ { 
 
