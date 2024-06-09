@@ -1,8 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view.menu;
+
+import controller.AgendamentoController;
+import controller.ConsultaController;
+import controller.FuncionarioController;
+import controller.MaterialController;
+import controller.PacienteController;
+import dto.LoginDTO;
+import javax.swing.JMenuItem;
+import view.cadastro.Cadastro;
+import view.cadastro.CadastroAgendamento;
+import view.cadastro.CadastroConsulta;
+import view.cadastro.CadastroFuncionario;
+import view.cadastro.CadastroMaterial;
+import view.cadastro.CadastroPaciente;
+import view.consulta.Consulta;
 
 /**
  *
@@ -10,18 +21,131 @@ package view.menu;
  */
 public class Menu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu
-     */
-    public Menu() {
+    //JMenuItem cadastroAgendamento = new JMenuItem();
+    //JMenuItem cadastroConsulta = new JMenuItem();
+    //JMenuItem cadastroFuncionario = new JMenuItem();
+    //JMenuItem cadastroMaterial = new JMenuItem();
+    //JMenuItem cadastroPaciente = new JMenuItem();
+    JMenuItem consultaAgendamento = new JMenuItem();
+    JMenuItem consultaConsulta = new JMenuItem();
+    JMenuItem consultaFuncionario = new JMenuItem();
+    JMenuItem consultaMaterial = new JMenuItem();
+    JMenuItem consultaPaciente = new JMenuItem();
+
+    public Menu(LoginDTO login) {
         initComponents();
+        nomeiaMenus();
+        labelPerfil.setText(login.usuario);
+
+        menuConsulta.add(consultaAgendamento);
+        menuConsulta.add(consultaConsulta);
+        menuConsulta.add(consultaFuncionario);
+        menuConsulta.add(consultaMaterial);
+        menuConsulta.add(consultaPaciente);
+
+        /*switch (login.funcao) {
+            case 'DENTISTA':
+                menuCadastro
+                .add(cadastroAgendamento);
+                break;
+            case 'RECPCIONISTA':
+                
+                break;
+            case 'GERENTE':
+                
+                break;
+            default:
+                throw new AssertionError();
+        }*/
+
+ /*cadastroAgendamento.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+            }
+        });
+
+        cadastroConsulta.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+            }
+        });
+
+        cadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+            }
+        });
+
+        cadastroMaterial.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+            }
+        });
+        cadastroPaciente.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+            }
+        });*/
+        consultaAgendamento.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Consulta telaConsulta = new Consulta(new CadastroAgendamento(), new AgendamentoController());
+                telaConsulta.setVisible(true);
+            }
+        });
+
+        consultaConsulta.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Consulta telaConsulta = new Consulta(new CadastroConsulta(), new ConsultaController());
+                telaConsulta.setVisible(true);
+            }
+        });
+
+        consultaFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Consulta telaConsulta = new Consulta(new CadastroFuncionario(), new FuncionarioController());
+                telaConsulta.setVisible(true);
+            }
+        });
+
+        consultaMaterial.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Consulta telaConsulta = new Consulta(new CadastroMaterial(), new MaterialController());
+                telaConsulta.setVisible(true);
+            }
+        });
+
+        consultaPaciente.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Consulta telaConsulta = new Consulta(new CadastroPaciente(), new PacienteController());
+                telaConsulta.setVisible(true);
+            }
+        });
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+    private void nomeiaMenus() {
+        //cadastroAgendamento.setText("Agendamento");
+        //cadastroConsulta.setText("Consulta");
+        //cadastroFuncionario.setText("Funcionário");
+        //cadastroMaterial.setText("Material");
+        //cadastroPaciente.setText("Paciente");
+
+        consultaAgendamento.setText("Agendamento");
+        consultaConsulta.setText("Consulta");
+        consultaFuncionario.setText("Funcionário");
+        consultaMaterial.setText("Material");
+        consultaPaciente.setText("Paciente");
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -30,7 +154,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(3, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(3, 32767));
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        labelPerfil = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -40,12 +164,9 @@ public class Menu extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu7 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu8 = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuCadastro = new javax.swing.JMenu();
+        menuConsulta = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(243, 102, 186));
@@ -61,10 +182,9 @@ public class Menu extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\lavota\\Documents\\NetBeansProjects\\ProjetoOdonto\\Clinica-Odontologica\\assets\\Design sem nome (1).png")); // NOI18N
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Felipe");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 110, -1, -1));
+        labelPerfil.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        labelPerfil.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(labelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 110, -1, -1));
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_START);
 
@@ -148,70 +268,18 @@ public class Menu extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
 
-        jMenu7.setText("Dentista");
+        jMenuBar1.setForeground(new java.awt.Color(243, 102, 186));
 
-        jMenuItem1.setText("jMenuItem1");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
-        jMenu7.add(jMenuItem1);
+        menuCadastro.setText("Cadastro\n");
+        jMenuBar1.add(menuCadastro);
 
-        jMenuBar2.add(jMenu7);
+        menuConsulta.setText("Consulta");
+        jMenuBar1.add(menuConsulta);
 
-        jMenu8.setText("Recepcionista");
-        jMenuBar2.add(jMenu8);
-
-        jMenu1.setText("Paciente");
-        jMenuBar2.add(jMenu1);
-
-        jMenu2.setText("Configurações");
-        jMenuBar2.add(jMenu2);
-
-        setJMenuBar(jMenuBar2);
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Menu().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
@@ -221,18 +289,15 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu7;
-    private javax.swing.JMenu jMenu8;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel labelPerfil;
+    private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenu menuConsulta;
     // End of variables declaration//GEN-END:variables
 }

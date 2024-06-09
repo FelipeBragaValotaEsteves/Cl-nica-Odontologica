@@ -1,9 +1,11 @@
 package com.mycompany.clinicaodontologicaprojeto;
 
+import view.login.Login;
+
 public class ClinicaOdontologicaProjeto {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-    
+        Login login = new Login();
+        login.setVisible(true);
     }
 }
