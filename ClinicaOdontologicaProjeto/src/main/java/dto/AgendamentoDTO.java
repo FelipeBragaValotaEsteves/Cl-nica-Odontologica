@@ -4,27 +4,23 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import model.Agendamento;
-import persistence.funcionario.FuncionarioImpl;
-import persistence.paciente.PacienteImpl;
 
 public class AgendamentoDTO extends DTO {
 
     public Date data;
     public Date hora;
-    public Long idFuncionario;
-    public Long idPaciente;
+    public FuncionarioDTO funcionario;
+    public PacienteDTO paciente;
 
     @Override
     public Object builder() {
-        Agendamento agedamento = new Agendamento();
-        agedamento.setId(id != null ? Long.valueOf(id) : 0l);
-        agedamento.setHora(hora);
-        FuncionarioImpl func = new FuncionarioImpl();
-        agedamento.setFuncionario(func.getFuncById());
-        PacienteImpl pac = new PacienteImpl();
-        agedamento.setPaciente(pac.getPacienteById());
+        Agendamento agendamento = new Agendamento();
+        agendamento.setId(id != null ? Long.valueOf(id) : 0l);
+        agendamento.setHora(hora);
+        agendamento.setFuncionario(funcionario.builder());
+        agendamento.setPaciente(paciente.builder());
 
-        return agedamento;
+        return agendamento;
     }
 
     public List getListaDados(List<Agendamento> dados) {
@@ -40,8 +36,10 @@ public class AgendamentoDTO extends DTO {
         dto.id = a.getId().toString();
         dto.data = a.getData();
         dto.hora = a.getHora();
-        dto.idFuncionario = a.getFuncionario().getId();
-        dto.idPaciente = a.getPaciente().getId();
+        FuncionarioDTO funcDto = new FuncionarioDTO();
+        dto.funcionario = (FuncionarioDTO) funcDto.converte(a.getFuncionario());
+        PacienteDTO pacDto = new PacienteDTO();
+        dto.paciente = (PacienteDTO) pacDto.converte(a.getPaciente());
         dto.data = a.getData();
 
         return dto;

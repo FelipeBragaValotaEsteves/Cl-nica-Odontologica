@@ -16,11 +16,7 @@ public class LoginController implements Controller {
         LoginDTO loginDTO = (LoginDTO) dto;
 
         if (validaCampos(loginDTO)) {
-            if (loginDTO.id != null && !loginDTO.id.isEmpty() && !loginDTO.id.isBlank()) {
-                dao.salvar(loginDTO.builder());
-            } else {
-                dao.atualiza(loginDTO.builder());
-            }
+            dao.atualiza(loginDTO.builder());
         } else {
             throw new Exception("Preencha todos os campos obrigatórios (*)!");
         }
@@ -46,7 +42,7 @@ public class LoginController implements Controller {
     @Override
     public Object[] getDados(DTO o) {
         LoginDTO dto = (LoginDTO) o;
-        return new Object[]{dto.id, dto.usuario};
+        return new Object[]{dto.id, dto.usuario, dto.funcionario.nomeFuncionario};
     }
 
     @Override

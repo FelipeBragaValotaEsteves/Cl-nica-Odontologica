@@ -36,7 +36,7 @@ public class FuncionarioController implements Controller {
     @Override
     public Object[] getDados(DTO o) {
         FuncionarioDTO dto = (FuncionarioDTO) o;
-        return new Object[]{dto.id, dto.nomeFuncionario};
+        return new Object[]{dto.id, dto.nomeFuncionario, dto.numeroRegistro};
     }
 
     @Override

@@ -57,6 +57,10 @@ public class EnderecoController implements Controller {
         if (endereco.rua == null || endereco.rua.isEmpty()) {
             return false;
         }
+        
+         if (endereco.bairro == null || endereco.bairro.isEmpty()) {
+            return false;
+        }
 
         if (endereco.idCidade == null) {
             return false;

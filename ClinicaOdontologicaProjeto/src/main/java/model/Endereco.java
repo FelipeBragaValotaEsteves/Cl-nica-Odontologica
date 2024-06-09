@@ -21,6 +21,7 @@ public @Data class Endereco implements Serializable, Model {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String rua;
+    private String bairro;
     @ManyToOne
     @JoinColumn(name="cidade_id")
     private Cidade cidade;

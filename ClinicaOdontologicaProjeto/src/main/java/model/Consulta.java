@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,9 +12,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+
 
 @Entity
 @Getter
@@ -32,15 +35,17 @@ public @Data class Consulta implements Serializable, Model {
     @ManyToOne
     @JoinColumn(name="paciente_id")
     private Paciente paciente;
+    @OneToOne(cascade = CascadeType.ALL)
+    private RegistroConsulta registroConsulta;
     private Float valor;
     @Enumerated(EnumType.STRING)
     private FormaPagamento formaPagamento;
 
     public String[] getTitulosColunas() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new String[]{"Id", "Funcionário", "Paciente", "Valor", "Pagamento"};
     }
 
     public String[] getFiltros() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new String[]{"Funcionário", "Paciente", "Valor", "Pagamento"};
     }
 }

@@ -24,7 +24,6 @@ public @Data class Contato implements Serializable {
     private Long id;
     @Column(length = 200)
     private String informacao;
-    private Integer tipo;
     @ManyToOne
     @JoinColumn(name="paciente_id")
     private Paciente paciente;

@@ -42,7 +42,7 @@ public class MaterialController implements Controller {
     @Override
     public Object[] getDados(DTO o) {
         MaterialDTO dto = (MaterialDTO) o;
-        return new Object[]{dto.id, dto.nome, dto.qtdEstoque, dto.qtdMinima};
+        return new Object[]{dto.id, dto.nome, dto.qtdMinima, dto.qtdEstoque};
     }
 
     @Override

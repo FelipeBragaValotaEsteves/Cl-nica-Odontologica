@@ -14,7 +14,8 @@ import lombok.Data;
 @Entity
 @Getter
 @Setter
-public @Data class Login implements Serializable, Model {
+public @Data
+class Login implements Serializable, Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,15 +23,15 @@ public @Data class Login implements Serializable, Model {
     private String usuario;
     private String senha;
     @Enumerated(EnumType.STRING)
-    private Funcao funcao;
+    private Funcionario funcionario;
 
     @Override
     public String[] getTitulosColunas() {
-        return new String[]{"usuario", "senha"};
+        return new String[]{"Usuário", "Senha", "Funcionário"};
     }
 
     @Override
     public String[] getFiltros() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new String[]{"Usuário"};
     }
 }

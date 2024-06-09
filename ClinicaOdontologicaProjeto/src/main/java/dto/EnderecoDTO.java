@@ -1,6 +1,5 @@
 package dto;
 
-import model.Cidade;
 import model.Endereco;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,6 +8,7 @@ import persistence.cidade.CidadeImpl;
 public class EnderecoDTO extends DTO {
 
     public String rua;
+    public String bairro;
     public Long idCidade;
 
     @Override
@@ -29,7 +29,7 @@ public class EnderecoDTO extends DTO {
         return dadosDTO;
     }
 
-    private Object converte(Endereco e) {
+    public Object converte(Endereco e) {
         EnderecoDTO dto = new EnderecoDTO();
         dto.id = e.getId().toString();
         dto.rua = e.getRua();

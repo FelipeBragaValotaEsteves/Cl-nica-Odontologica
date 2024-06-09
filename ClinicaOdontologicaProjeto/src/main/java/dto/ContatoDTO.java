@@ -9,7 +9,6 @@ import persistence.paciente.PacienteImpl;
 public class ContatoDTO extends DTO {
 
     public String informacao;
-    public Integer tipo;
     public Long idPaciente;
     public TipoContato tipoContato;
     
@@ -17,7 +16,6 @@ public class ContatoDTO extends DTO {
     public Object builder() {
         Contato contato = new Contato();
         contato.setId(id != null ? Long.valueOf(id) : 0l);
-        contato.setTipo(tipo);
         PacienteImpl pac = new PacienteImpl();
         contato.setPaciente(pac.getPacienteById());
         contato.setTipoContato(tipoContato);
