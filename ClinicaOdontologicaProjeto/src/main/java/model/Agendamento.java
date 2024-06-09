@@ -15,8 +15,9 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-public @Data class Agendamento implements Serializable, Model {
- 
+public @Data
+class Agendamento implements Serializable, Model {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,19 +26,19 @@ public @Data class Agendamento implements Serializable, Model {
     @Temporal(TemporalType.TIME)
     private Date hora;
     @ManyToOne
-    @JoinColumn(name="dentista_id")
+    @JoinColumn(name = "dentista_id")
     private Funcionario funcionario;
     @ManyToOne
-    @JoinColumn(name="paciente_id")
+    @JoinColumn(name = "paciente_id")
     private Paciente paciente;
 
     @Override
     public String[] getTitulosColunas() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new String[]{"Id", "Data", "Hora", "Funcionário", "Paciente"};
     }
 
     @Override
     public String[] getFiltros() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new String[]{"Data", "Funcionário", "Paciente"};
     }
 }

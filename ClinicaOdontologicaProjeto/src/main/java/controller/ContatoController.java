@@ -42,7 +42,7 @@ public class ContatoController implements Controller {
     @Override
     public Object[] getDados(DTO o) {
         ContatoDTO dto = (ContatoDTO) o;
-        return new Object[]{dto.id, dto.tipo, dto.idPaciente};
+        return new Object[]{dto.id, dto.idPaciente};
     }
 
     @Override
@@ -63,10 +63,6 @@ public class ContatoController implements Controller {
         }
         
         if (contato.tipoContato == null) {
-            return false;
-        }
-        
-        if (contato.tipo == null) {
             return false;
         }
        

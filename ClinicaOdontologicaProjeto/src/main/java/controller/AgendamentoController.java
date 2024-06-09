@@ -42,7 +42,7 @@ public class AgendamentoController implements Controller {
     @Override
     public Object[] getDados(DTO o) {
         AgendamentoDTO dto = (AgendamentoDTO) o;
-        return new Object[]{dto.id, dto.data, dto.hora};
+        return new Object[]{dto.id, dto.data, dto.hora, dto.funcionario, dto.paciente};
     }
 
     @Override
@@ -61,11 +61,11 @@ public class AgendamentoController implements Controller {
             return false;
         }
         
-        if (ag.idFuncionario == null || ag.idFuncionario.toString().isEmpty()) {
+        if (ag.funcionario == null) {
             return false;
         }
         
-        if (ag.idPaciente == null || ag.idPaciente.toString().isEmpty()) {
+        if (ag.paciente == null) {
             return false;
         }
         return true;

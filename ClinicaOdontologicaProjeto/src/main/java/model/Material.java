@@ -12,7 +12,8 @@ import lombok.Data;
 @Entity
 @Getter
 @Setter
-public @Data class Material implements Serializable, Model {
+public @Data
+class Material implements Serializable, Model {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -24,12 +25,12 @@ public @Data class Material implements Serializable, Model {
 
     @Override
     public String[] getTitulosColunas() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new String[]{"Id", "Nome", "Qtd mínima", "Qtd estoque"};
     }
 
     @Override
     public String[] getFiltros() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return new String[]{"Nome"};
     }
-    
+
 }

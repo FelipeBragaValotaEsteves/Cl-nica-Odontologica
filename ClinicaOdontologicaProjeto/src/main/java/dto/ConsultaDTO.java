@@ -4,14 +4,16 @@ import java.util.LinkedList;
 import java.util.List;
 import model.Consulta;
 import model.FormaPagamento;
+import model.RegistroConsulta;
 import persistence.funcionario.FuncionarioImpl;
 import persistence.paciente.PacienteImpl;
 
 public class ConsultaDTO extends DTO {
 
     public String observacao;
-    public Long idFuncionario;
-    public Long idPaciente;
+    public FuncionarioDTO funcionario;
+    public PacienteDTO paciente;
+    public RegistroConsultaDTO registroConsulta;
     public Float valor;
     public FormaPagamento formaPagamento;
 
@@ -20,11 +22,10 @@ public class ConsultaDTO extends DTO {
         Consulta consulta = new Consulta();
         consulta.setId(id != null ? Long.valueOf(id) : 0l);
         consulta.setObservacao(observacao);
-        FuncionarioImpl func = new FuncionarioImpl();
-        consulta.setFuncionario(func.getFuncById());
-        PacienteImpl pac = new PacienteImpl();
-        consulta.setPaciente(pac.getPacienteById());
+        consulta.setFuncionario(funcionario.builder());
+        consulta.setPaciente(paciente.builder());
         consulta.setValor(valor);
+        consulta.setRegistroConsulta((RegistroConsulta) registroConsulta.builder());
         consulta.setFormaPagamento(formaPagamento);
 
         return consulta;
@@ -38,15 +39,18 @@ public class ConsultaDTO extends DTO {
         return dadosDTO;
     }
 
-    private Object converte(Consulta a) {
+    private Object converte(Consulta c) {
         ConsultaDTO dto = new ConsultaDTO();
-        dto.id = a.getId().toString();
-        dto.observacao = a.getObservacao();
-        dto.idFuncionario = a.getFuncionario().getId();
-        dto.idPaciente = a.getPaciente().getId();
-        dto.valor = a.getValor();
-        dto.formaPagamento = a.getFormaPagamento();
-
+        dto.id = c.getId().toString();
+        dto.observacao = c.getObservacao();
+        FuncionarioDTO funcDto = new FuncionarioDTO();
+        dto.funcionario = (FuncionarioDTO) funcDto.converte(c.getFuncionario());
+        PacienteDTO pacDto = new PacienteDTO();
+        dto.paciente = (PacienteDTO) pacDto.converte(c.getPaciente());
+        dto.valor = c.getValor();
+        dto.formaPagamento = c.getFormaPagamento();
+        RegistroConsultaDTO regDto = new RegistroConsultaDTO();
+        dto.registroConsulta = (RegistroConsultaDTO) regDto.converte(c.getRegistroConsulta());
         return dto;
     }
 }

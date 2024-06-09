@@ -37,7 +37,7 @@ public class CidadeController implements Controller {
     @Override
     public String[] getTitulosColunas() {
        Cidade cidade = new Cidade();
-        return cidade.getTitulosColunas();
+       return cidade.getTitulosColunas();
     }
 
     @Override

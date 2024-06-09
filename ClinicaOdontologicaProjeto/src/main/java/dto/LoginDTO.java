@@ -8,6 +8,7 @@ public class LoginDTO extends DTO {
 
     public String usuario;
     public String senha;
+    public FuncionarioDTO funcionario;
 
     @Override
     public Object builder() {
@@ -15,6 +16,7 @@ public class LoginDTO extends DTO {
         login.setId(id != null ? Long.valueOf(id) : 0l);
         login.setUsuario(usuario);
         login.setSenha(senha);
+        login.setFuncionario(funcionario.builder());
         return login;
     }
     
@@ -26,11 +28,13 @@ public class LoginDTO extends DTO {
         return dadosDTO;
     }
 
-    private Object converte(Login l) {
+    public Object converte(Login l) {
         LoginDTO dto = new LoginDTO();
         dto.usuario = l.getUsuario();
         dto.id = l.getId().toString();
         dto.senha = l.getSenha();
+        FuncionarioDTO funcDto = new FuncionarioDTO();
+        dto.funcionario = (FuncionarioDTO) funcDto.converte(l.getFuncionario());
         return dto;
     }
 }

@@ -58,14 +58,6 @@ public class RegistroConsultaController implements Controller {
             return false;
         }
 
-        if (registroConsulta.idConsulta == null) {
-            return false;
-        }
-
-        if (registroConsulta.idProntuario == null) {
-            return false;
-        }
-
         return true;
     }
 }

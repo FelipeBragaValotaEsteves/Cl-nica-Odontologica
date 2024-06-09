@@ -7,7 +7,7 @@ import persistence.paciente.PacienteImpl;
 
 public class ProntuarioDTO extends DTO {
 
-    public Long idPaciente;
+    public PacienteDTO paciente;
 
     @Override
     public Object builder() {
@@ -15,7 +15,7 @@ public class ProntuarioDTO extends DTO {
         prontuario.setId(id != null ? Long.valueOf(id) : 0l);
         PacienteImpl pac = new PacienteImpl();
         prontuario.setPaciente(pac.getPacienteById());
-
+        prontuario.setPaciente(paciente.builder());
         return prontuario;
     }
 
@@ -27,10 +27,11 @@ public class ProntuarioDTO extends DTO {
         return dadosDTO;
     }
 
-    private Object converte(Prontuario p) {
+    public Object converte(Prontuario p) {
         ProntuarioDTO dto = new ProntuarioDTO();
         dto.id = p.getId().toString();
-        dto.idPaciente = p.getPaciente().getId();
+        PacienteDTO pacDto = new PacienteDTO();
+        dto.paciente = (PacienteDTO) pacDto.converte(p.getPaciente());
 
         return dto;
     }

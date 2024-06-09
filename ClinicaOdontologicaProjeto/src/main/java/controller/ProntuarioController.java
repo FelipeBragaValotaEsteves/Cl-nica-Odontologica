@@ -42,7 +42,7 @@ public class ProntuarioController implements Controller {
     @Override
     public Object[] getDados(DTO o) {
         ProntuarioDTO dto = (ProntuarioDTO) o;
-        return new Object[]{dto.id, dto.idPaciente};
+        return new Object[]{dto.id, dto.paciente.nome};
     }
 
     @Override
@@ -54,7 +54,7 @@ public class ProntuarioController implements Controller {
     
     public boolean validaCampos(ProntuarioDTO prontuario) {
 
-        if (prontuario.idPaciente == null) {
+        if (prontuario.paciente == null) {
             return false;
         }
         

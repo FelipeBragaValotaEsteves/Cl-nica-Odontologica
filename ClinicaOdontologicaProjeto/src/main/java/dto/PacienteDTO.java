@@ -1,21 +1,28 @@
 package dto;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import model.Contato;
+import model.Endereco;
 import model.Paciente;
+import model.Prontuario;
 
 public class PacienteDTO extends DTO {
 
     public String nome;
     public String cpf;
     public Date dataNascimento;
+    public EnderecoDTO endereco;
     public Integer numeroCasa;
     public String complemento;
     public String convenio;
-    public String email;
     public String responsavel;
+    public ProntuarioDTO prontuario;
+    public List<ContatoDTO> contatos;
 
+    @Override
     public Paciente builder() {
         Paciente paciente = new Paciente();
         paciente.setId(id != null ? Long.valueOf(id) : 01);
@@ -25,8 +32,10 @@ public class PacienteDTO extends DTO {
         paciente.setNumeroCasa(numeroCasa);
         paciente.setComplemento(complemento);
         paciente.setConvenio(convenio);
-        paciente.setEmail(email);
         paciente.setResponsavel(responsavel);
+        paciente.setEndereco((Endereco) endereco.builder());
+        paciente.setProntuario((Prontuario) prontuario.builder());
+
         return paciente;
     }
 
@@ -38,18 +47,34 @@ public class PacienteDTO extends DTO {
         return dadosDTO;
     }
 
-    public Object converte(Paciente f) {
+    public Object converte(Paciente p) {
 
         PacienteDTO dto = new PacienteDTO();
-        dto.id = f.getId().toString();
-        dto.nome = f.getNome();
-        dto.dataNascimento = f.getDataNascimento();
-        dto.complemento = f.getComplemento();
-        dto.convenio = f.getConvenio();
-        dto.cpf = f.getCpf();
-        dto.email = f.getEmail();
-        dto.numeroCasa = f.getNumeroCasa();
-        dto.responsavel = f.getResponsavel();
+        dto.id = p.getId().toString();
+        dto.nome = p.getNome();
+        dto.dataNascimento = p.getDataNascimento();
+        dto.complemento = p.getComplemento();
+        dto.convenio = p.getConvenio();
+        dto.cpf = p.getCpf();
+        dto.numeroCasa = p.getNumeroCasa();
+        dto.responsavel = p.getResponsavel();
+
+        ProntuarioDTO prontuarioDTO = new ProntuarioDTO();
+        dto.endereco = (EnderecoDTO) prontuarioDTO.converte(p.getProntuario());
+
+        EnderecoDTO enderecoDTO = new EnderecoDTO();
+        dto.endereco = (EnderecoDTO) enderecoDTO.converte(p.getEndereco());
+
+        List<ContatoDTO> contatoDTOs = new ArrayList<>();
+
+        for (Contato contato : p.getContatos()) {
+            ContatoDTO contatoDTO = new ContatoDTO();
+            contatoDTO.id = contato.getId().toString();
+            contatoDTO.tipoContato = contato.getTipoContato();
+            contatoDTO.informacao = contato.getInformacao();
+            contatoDTO.idPaciente = contato.getPaciente().getId();
+            contatoDTOs.add(contatoDTO);
+        }
 
         return dto;
     }

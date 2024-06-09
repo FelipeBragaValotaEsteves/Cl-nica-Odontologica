@@ -42,7 +42,7 @@ public class ConsultaController implements Controller {
     @Override
     public Object[] getDados(DTO o) {
         ConsultaDTO dto = (ConsultaDTO) o;
-        return new Object[]{dto.id, dto.valor};
+        return new Object[]{dto.id, dto.funcionario, dto.paciente, dto.valor, dto.formaPagamento};
     }
 
     @Override
@@ -66,11 +66,11 @@ public class ConsultaController implements Controller {
             return false;
         }
 
-        if (consulta.idFuncionario == null) {
+        if (consulta.funcionario == null) {
             return false;
         }
 
-        if (consulta.idPaciente == null) {
+        if (consulta.paciente == null) {
             return false;
         }
         return true;

@@ -9,8 +9,6 @@ import persistence.prontuario.ProntuarioImpl;
 public class RegistroConsultaDTO extends DTO {
 
     public String descricao;
-    public Long idConsulta;
-    public Long idProntuario;
 
     @Override
     public Object builder() {
@@ -33,12 +31,10 @@ public class RegistroConsultaDTO extends DTO {
         return dadosDTO;
     }
 
-    private Object converte(RegistroConsulta rc) {
+    public Object converte(RegistroConsulta rc) {
         RegistroConsultaDTO dto = new RegistroConsultaDTO();
         dto.id = rc.getId().toString();
         dto.descricao = rc.getDescricao();
-        dto.idConsulta = rc.getConsulta().getId();
-        dto.idProntuario = rc.getProntuario().getId();
 
         return dto;
     }

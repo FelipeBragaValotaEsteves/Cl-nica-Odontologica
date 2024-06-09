@@ -42,7 +42,7 @@ public class PacienteController implements Controller {
     @Override
     public Object[] getDados(DTO o) {
         PacienteDTO dto = (PacienteDTO) o;
-        return new Object[]{dto.id, dto.nome, dto.cpf, dto.convenio};
+        return new Object[]{dto.id, dto.nome, dto.cpf, dto.convenio, dto.dataNascimento};
     }
 
     @Override
@@ -62,11 +62,11 @@ public class PacienteController implements Controller {
             return false;
         }
 
-        if (paciente.convenio == null || paciente.convenio.isEmpty()) {
+        if (paciente.cpf == null || paciente.cpf.isEmpty()) {
             return false;
         }
-
-        if (paciente.cpf == null || paciente.cpf.isEmpty()) {
+        
+        if(paciente.endereco == null) {
             return false;
         }
 
