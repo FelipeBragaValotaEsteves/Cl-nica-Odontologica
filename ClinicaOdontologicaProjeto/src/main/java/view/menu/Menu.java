@@ -34,6 +34,8 @@ public class Menu extends javax.swing.JFrame {
 
     public Menu(LoginDTO login) {
         initComponents();
+        setTitle("Menu");
+        setLocationRelativeTo(null);
         nomeiaMenus();
         labelPerfil.setText(login.usuario);
 
