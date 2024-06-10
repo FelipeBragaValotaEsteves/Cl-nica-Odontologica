@@ -1,20 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
- */
 package view.consulta;
 
 import controller.Controller;
 import dto.DTO;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import view.cadastro.Cadastro;
 import view.cadastro.CadastroInterface;
 
-/**
- *
- * @author lavota
- */
 public class Consulta extends javax.swing.JDialog {
 
     CadastroInterface cadastroInterface;
@@ -23,7 +16,8 @@ public class Consulta extends javax.swing.JDialog {
 
     public Consulta(CadastroInterface interfaceCadastro, Controller controller) {
         initComponents();
-
+        setTitle("Consulta");
+        setLocationRelativeTo(null);
         this.cadastroInterface = interfaceCadastro;
         this.controller = controller;
         atualiza();
@@ -220,8 +214,13 @@ public class Consulta extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-        controller.remover(lista.get(jTable1.getSelectedRow()));
-        atualiza();
+        try {
+            controller.remover(lista.get(jTable1.getSelectedRow()));
+            JOptionPane.showMessageDialog(null, "Item removido com sucesso!", "Error", JOptionPane.DEFAULT_OPTION);
+            atualiza();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível remover este item!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
@@ -229,14 +228,23 @@ public class Consulta extends javax.swing.JDialog {
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        cadastroInterface.preencheCampos(lista.get(jTable1.getSelectedRow()));
-        new Cadastro(null, true, cadastroInterface, controller).setVisible(true);
-        atualiza();
+        try {
+            cadastroInterface.preencheCampos(lista.get(jTable1.getSelectedRow()));
+            new Cadastro(null, true, cadastroInterface, controller).setVisible(true);
+            atualiza();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível editar este item!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
-        new Cadastro(null, true, cadastroInterface, controller).setVisible(true);
-        atualiza();
+        try {
+            new Cadastro(null, true, cadastroInterface, controller).setVisible(true);
+            atualiza();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Não foi possível criar um novo!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private synchronized void atualiza() {

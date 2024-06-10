@@ -14,6 +14,8 @@ public class Cadastro extends javax.swing.JDialog {
 
     public Cadastro(java.awt.Frame parent, boolean modal, CadastroInterface cadastroInterface, Controller c) {
         super(parent, modal);
+        setTitle("Cadastro");
+        setLocationRelativeTo(null);
         initComponents();
         add(cadastroInterface, BorderLayout.CENTER);
         this.cadastroInterface = cadastroInterface;
@@ -156,9 +158,10 @@ public class Cadastro extends javax.swing.JDialog {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         try {
             controller.salvar(cadastroInterface.salvar());
+            JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "Sucesso", JOptionPane.DEFAULT_OPTION);
             dispose();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Não foi possível salvar este item!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
