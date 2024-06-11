@@ -50,7 +50,7 @@ public class PacienteDTO extends DTO {
     public Object converte(Paciente p) {
 
         PacienteDTO dto = new PacienteDTO();
-        dto.id = p.getId().toString();
+        dto.id = p.getId();
         dto.nome = p.getNome();
         dto.dataNascimento = p.getDataNascimento();
         dto.complemento = p.getComplemento();
@@ -69,7 +69,7 @@ public class PacienteDTO extends DTO {
 
         for (Contato contato : p.getContatos()) {
             ContatoDTO contatoDTO = new ContatoDTO();
-            contatoDTO.id = contato.getId().toString();
+            contatoDTO.id = contato.getId();
             contatoDTO.tipoContato = contato.getTipoContato();
             contatoDTO.informacao = contato.getInformacao();
             contatoDTO.idPaciente = contato.getPaciente().getId();

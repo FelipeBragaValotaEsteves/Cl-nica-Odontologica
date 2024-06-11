@@ -31,7 +31,7 @@ public class LoginDTO extends DTO {
     public Object converte(Login l) {
         LoginDTO dto = new LoginDTO();
         dto.usuario = l.getUsuario();
-        dto.id = l.getId().toString();
+        dto.id = l.getId();
         dto.senha = l.getSenha();
         FuncionarioDTO funcDto = new FuncionarioDTO();
         dto.funcionario = (FuncionarioDTO) funcDto.converte(l.getFuncionario());

@@ -4,6 +4,7 @@
  */
 package view.login;
 
+import controller.FuncionarioController;
 import controller.LoginController;
 import dto.LoginDTO;
 import javax.swing.JOptionPane;
@@ -97,7 +98,7 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\lavota\\Documents\\NetBeansProjects\\ProjetoOdonto\\Clinica-Odontologica\\assets\\IMAGEM LOGIN.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\ferna\\OneDrive\\Desktop\\Clinica-Odontologica\\assets\\IMAGEM LOGIN.png")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,23 +106,24 @@ public class Login extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addContainerGap(12, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addComponent(jLabel5)))
+                .addGap(76, 76, 76)
+                .addComponent(jLabel5)
+                .addGap(4, 4, 4)
+                .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -132,13 +134,19 @@ public class Login extends javax.swing.JFrame {
         LoginDTO loginDTO = new LoginDTO();
         loginDTO.usuario = fieldUsuario.getText();
         loginDTO.senha = String.valueOf(fieldSenha.getPassword());
-        //if (loginController.validaCampos(loginDTO)) {
-        Menu menu = new Menu(loginDTO);
-        menu.setVisible(true);
-        dispose();
-        //} else {
-        //    JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!", "Error", JOptionPane.ERROR_MESSAGE);
-        //}
+
+        System.out.println("lOGIN DTO ANTES DE VALIDAR : " + loginDTO);
+
+        LoginDTO loginDTOEncontrado = loginController.validaLogin(loginDTO);
+
+        System.out.println("lOGIN DTO DEPOIS DE VALIDAR : " + loginDTOEncontrado);
+        if (loginDTOEncontrado != null) {
+            Menu menu = new Menu(loginDTO);
+            menu.setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
 

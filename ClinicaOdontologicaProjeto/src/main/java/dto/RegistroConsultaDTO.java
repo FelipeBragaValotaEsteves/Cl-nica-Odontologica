@@ -33,7 +33,7 @@ public class RegistroConsultaDTO extends DTO {
 
     public Object converte(RegistroConsulta rc) {
         RegistroConsultaDTO dto = new RegistroConsultaDTO();
-        dto.id = rc.getId().toString();
+        dto.id = rc.getId();
         dto.descricao = rc.getDescricao();
 
         return dto;

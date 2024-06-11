@@ -11,10 +11,6 @@ import javax.swing.table.DefaultTableModel;
 import view.cadastro.Cadastro;
 import view.cadastro.CadastroInterface;
 
-/**
- *
- * @author lavota
- */
 public class Consulta extends javax.swing.JDialog {
 
     CadastroInterface cadastroInterface;
@@ -241,6 +237,7 @@ public class Consulta extends javax.swing.JDialog {
 
     private synchronized void atualiza() {
         lista = controller.getListaDados();
+        System.out.println(lista);
         String names[] = controller.getTitulosColunas();
         Object[][] data = new Object[lista.size()][names.length];
         for (int i = 0; i < lista.size(); i++) {

@@ -68,7 +68,7 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\lavota\Documents\NetBeansProjects\ProjetoOdonto\Clinica-Odontologica\assets\Design sem nome.png"/>
+              <Image iconType="2" name="C:\Users\ferna\OneDrive\Desktop\Clinica-Odontologica\assets\Design sem nome.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -101,7 +101,7 @@
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\lavota\Documents\NetBeansProjects\ProjetoOdonto\Clinica-Odontologica\assets\Design sem nome (1).png"/>
+              <Image iconType="2" name="C:\Users\ferna\OneDrive\Desktop\Clinica-Odontologica\assets\Design sem nome (1).png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -296,7 +296,7 @@
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\lavota\Documents\NetBeansProjects\ProjetoOdonto\Clinica-Odontologica\assets\dr hannah.png"/>
+              <Image iconType="2" name="C:\Users\ferna\OneDrive\Desktop\Clinica-Odontologica\assets\dr hannah.png"/>
             </Property>
           </Properties>
           <Constraints>

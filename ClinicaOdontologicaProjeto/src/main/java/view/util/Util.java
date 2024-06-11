@@ -11,7 +11,7 @@ public class Util {
         List<DTO> dados = controllerCombo.getListaDados();
 
         for (DTO dado : dados) {
-            Jcombo.addItem(dado);
+            Jcombo.addItem(dado.toString());
         }
     }
 }

@@ -3,14 +3,13 @@ package persistence;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 public class Dao {
 
     private static Dao entidade;
-    private final EntityManagerFactory emf;
-    private final EntityManager em;
+    protected final EntityManagerFactory emf;
+    protected final EntityManager em;
 
     private Dao() {
         emf = Persistence.createEntityManagerFactory("com.mycompany_ClinicaOdontologicaProjeto_jar_1.0-SNAPSHOTPU");
@@ -44,18 +43,18 @@ public class Dao {
 
     public void remove(Object o) {
         em.getTransaction().begin();
-        em.remove(o);
+        em.remove(em.merge(o));
         em.getTransaction().commit();
     }
 
     public List listar(Class c, String where) {
-        return em.createNativeQuery("select o from " + c.getSimpleName() + " o where 1=1 " + where)
+        return em.createQuery("select o from " + c.getSimpleName() + " o where 1=1 " + where)
                 .getResultList();
     }
 
     void remove(Integer id, Class clazz) {
         em.getTransaction().begin();
-        //  em.remove();
+        //em.remove();
         em.getTransaction().commit();
     }
 }

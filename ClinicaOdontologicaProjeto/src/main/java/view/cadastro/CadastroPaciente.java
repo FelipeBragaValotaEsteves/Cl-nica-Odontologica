@@ -47,6 +47,7 @@ public class CadastroPaciente extends CadastroInterface {
         listaContatos.add(dtoContatoEmail);
 
         pacienteDTO.contatos = listaContatos;
+        System.out.println(comboCidade.getSelectedItem());
         pacienteDTO.endereco.idCidade = (Long) comboCidade.getSelectedItem();
         pacienteDTO.numeroCasa = Integer.parseInt(fielNCasa.getText());
         pacienteDTO.endereco.bairro = fieldBairro.getText();

@@ -7,7 +7,6 @@ import controller.MaterialController;
 import controller.PacienteController;
 import dto.LoginDTO;
 import javax.swing.JMenuItem;
-import view.cadastro.Cadastro;
 import view.cadastro.CadastroAgendamento;
 import view.cadastro.CadastroConsulta;
 import view.cadastro.CadastroFuncionario;
@@ -15,17 +14,13 @@ import view.cadastro.CadastroMaterial;
 import view.cadastro.CadastroPaciente;
 import view.consulta.Consulta;
 
-/**
- *
- * @author lavota
- */
 public class Menu extends javax.swing.JFrame {
 
-    //JMenuItem cadastroAgendamento = new JMenuItem();
-    //JMenuItem cadastroConsulta = new JMenuItem();
-    //JMenuItem cadastroFuncionario = new JMenuItem();
-    //JMenuItem cadastroMaterial = new JMenuItem();
-    //JMenuItem cadastroPaciente = new JMenuItem();
+    JMenuItem cadastroAgendamento = new JMenuItem();
+    JMenuItem cadastroConsulta = new JMenuItem();
+    JMenuItem cadastroFuncionario = new JMenuItem();
+    JMenuItem cadastroMaterial = new JMenuItem();
+    JMenuItem cadastroPaciente = new JMenuItem();
     JMenuItem consultaAgendamento = new JMenuItem();
     JMenuItem consultaConsulta = new JMenuItem();
     JMenuItem consultaFuncionario = new JMenuItem();
@@ -35,30 +30,55 @@ public class Menu extends javax.swing.JFrame {
     public Menu(LoginDTO login) {
         initComponents();
         nomeiaMenus();
-        labelPerfil.setText(login.usuario);
-
+//        labelPerfil.setText(login.usuario);
+        
+//        System.out.println(login.funcionario.funcao.getDescricao());
+        
         menuConsulta.add(consultaAgendamento);
         menuConsulta.add(consultaConsulta);
         menuConsulta.add(consultaFuncionario);
-        menuConsulta.add(consultaMaterial);
         menuConsulta.add(consultaPaciente);
+        menuConsulta.add(consultaMaterial);
 
-        /*switch (login.funcao) {
-            case 'DENTISTA':
-                menuCadastro
-                .add(cadastroAgendamento);
-                break;
-            case 'RECPCIONISTA':
-                
-                break;
-            case 'GERENTE':
-                
-                break;
-            default:
-                throw new AssertionError();
-        }*/
+        menuCadastro.add(cadastroAgendamento);
+        menuCadastro.add(cadastroConsulta);
+        menuCadastro.add(cadastroFuncionario);
+        menuCadastro.add(cadastroPaciente);
+        menuCadastro.add(cadastroMaterial);
 
- /*cadastroAgendamento.addActionListener(new java.awt.event.ActionListener() {
+//        switch (login.funcionario.funcao.getDescricao()) {
+//            case "DENTISTA":
+//                menuConsulta.add(consultaAgendamento);
+//                menuConsulta.add(consultaConsulta);
+//                menuConsulta.add(consultaFuncionario);
+//                menuConsulta.add(consultaPaciente);
+//                menuConsulta.add(consultaMaterial);
+//
+//                menuCadastro.add(cadastroAgendamento);
+//                menuCadastro.add(cadastroConsulta);
+//                menuCadastro.add(cadastroFuncionario);
+//                menuCadastro.add(cadastroPaciente);
+//                menuCadastro.add(cadastroMaterial);
+//                break;
+//            case "RECEPCIONISTA":
+//                menuConsulta.add(consultaAgendamento);
+//                menuConsulta.add(consultaPaciente);
+//
+//                menuCadastro.add(cadastroAgendamento);
+//                menuCadastro.add(cadastroPaciente);
+//                break;
+//            case "GERENTE":
+//                menuConsulta.add(consultaFuncionario);
+//                menuConsulta.add(consultaMaterial);
+//
+//                menuCadastro.add(cadastroFuncionario);
+//                menuCadastro.add(cadastroMaterial);
+//                break;
+//            default:
+//                throw new AssertionError();
+//        };
+
+        cadastroAgendamento.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
@@ -90,7 +110,8 @@ public class Menu extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
 
             }
-        });*/
+        });
+
         consultaAgendamento.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,11 +154,11 @@ public class Menu extends javax.swing.JFrame {
     }
 
     private void nomeiaMenus() {
-        //cadastroAgendamento.setText("Agendamento");
-        //cadastroConsulta.setText("Consulta");
-        //cadastroFuncionario.setText("Funcionário");
-        //cadastroMaterial.setText("Material");
-        //cadastroPaciente.setText("Paciente");
+        cadastroAgendamento.setText("Agendamento");
+        cadastroConsulta.setText("Consulta");
+        cadastroFuncionario.setText("Funcionário");
+        cadastroMaterial.setText("Material");
+        cadastroPaciente.setText("Paciente");
 
         consultaAgendamento.setText("Agendamento");
         consultaConsulta.setText("Consulta");
@@ -175,11 +196,11 @@ public class Menu extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(243, 102, 186));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\lavota\\Documents\\NetBeansProjects\\ProjetoOdonto\\Clinica-Odontologica\\assets\\Design sem nome.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\ferna\\OneDrive\\Desktop\\Clinica-Odontologica\\assets\\Design sem nome.png")); // NOI18N
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 186, 88));
         jPanel3.add(filler1, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 137, -1, -1));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\lavota\\Documents\\NetBeansProjects\\ProjetoOdonto\\Clinica-Odontologica\\assets\\Design sem nome (1).png")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\ferna\\OneDrive\\Desktop\\Clinica-Odontologica\\assets\\Design sem nome (1).png")); // NOI18N
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, -1, -1));
 
         labelPerfil.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -263,7 +284,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel4.setText("Tenha um ótimo dia!");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, 170, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\lavota\\Documents\\NetBeansProjects\\ProjetoOdonto\\Clinica-Odontologica\\assets\\dr hannah.png")); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon("C:\\Users\\ferna\\OneDrive\\Desktop\\Clinica-Odontologica\\assets\\dr hannah.png")); // NOI18N
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, -10, -1, 290));
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
