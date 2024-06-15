@@ -1,13 +1,18 @@
 package view.cadastro;
 
+import controller.PacienteController;
 import dto.DTO;
 import dto.FuncionarioDTO;
 import model.Funcao;
+import view.util.Util;
 
 public class CadastroFuncionario extends CadastroInterface {
-
+    
+    Util util = new Util();
+    
     public CadastroFuncionario() {
         initComponents();
+        util.preencheComboEnum(comboFuncao, Funcao.class);
     }
 
     private FuncionarioDTO dto;

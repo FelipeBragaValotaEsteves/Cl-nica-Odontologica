@@ -14,4 +14,12 @@ public class Util {
             Jcombo.addItem(dado);
         }
     }
+
+    public <T extends Enum<T>> void preencheComboEnum(JComboBox comboBox, Class<T> enumClass) {
+        T[] values = enumClass.getEnumConstants();
+
+        for (T value : values) {
+            comboBox.addItem(value.toString());
+        }
+    }
 }

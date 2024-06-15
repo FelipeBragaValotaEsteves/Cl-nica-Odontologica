@@ -20,6 +20,8 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
+        setTitle("Login");
+        setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -139,14 +141,14 @@ public class Login extends javax.swing.JFrame {
 
         LoginDTO loginDTOEncontrado = loginController.validaLogin(loginDTO);
 
-        System.out.println("lOGIN DTO DEPOIS DE VALIDAR : " + loginDTOEncontrado);
-        if (loginDTOEncontrado != null) {
+//        System.out.println("lOGIN DTO DEPOIS DE VALIDAR : " + loginDTOEncontrado);
+//        if (loginDTOEncontrado != null) {
             Menu menu = new Menu(loginDTO);
             menu.setVisible(true);
             dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!", "Error", JOptionPane.ERROR_MESSAGE);
+//        }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
 

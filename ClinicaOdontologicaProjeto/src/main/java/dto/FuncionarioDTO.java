@@ -41,4 +41,10 @@ public class FuncionarioDTO extends DTO {
         dto.funcao = f.getFuncao();
         return dto;
     }
+
+    @Override
+    public String toString() {
+        return "Funcionario [id=" + id + ", nome=" + nomeFuncionario + ", rg=" + numeroRegistro + "]";
+    }
+
 }

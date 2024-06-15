@@ -7,6 +7,7 @@ import dto.ConsultaDTO;
 import dto.DTO;
 import dto.FuncionarioDTO;
 import dto.PacienteDTO;
+import dto.ProntuarioDTO;
 import model.FormaPagamento;
 import view.util.Util;
 
@@ -18,8 +19,7 @@ public class CadastroConsulta extends CadastroInterface {
         initComponents();
         util.preencheCombo(comboDentista, new FuncionarioController());
         util.preencheCombo(comboPaciente, new PacienteController());
-        //util.preencheCombo(comboPagamento, new FormaPagamentoController());
-        util.preencheCombo(comboProntuario, new ProntuarioController());
+        util.preencheComboEnum(comboPagamento, FormaPagamento.class);
     }
 
     private ConsultaDTO dto;
@@ -33,7 +33,6 @@ public class CadastroConsulta extends CadastroInterface {
         dto.funcionario = (FuncionarioDTO) comboDentista.getSelectedItem();
         dto.paciente = (PacienteDTO) comboPaciente.getSelectedItem();
         dto.formaPagamento = (FormaPagamento) comboPagamento.getSelectedItem();
-        //dto.registroConsulta. = (PacienteDTO) comboProntuario.getSelectedItem();
         dto.registroConsulta.descricao = fieldDesc.getText();
         dto.observacao = fieldObs.getText();
         dto.valor = Float.parseFloat(fieldValor.getText());
@@ -47,7 +46,6 @@ public class CadastroConsulta extends CadastroInterface {
         comboDentista.setSelectedItem(this.dto.funcionario);
         comboPaciente.setSelectedItem(this.dto.paciente);
         comboPagamento.setSelectedItem(this.dto.formaPagamento);
-        //comboProntuario.setSelectedItem(this.dto.registroConsulta.);
         fieldDesc.setText(this.dto.registroConsulta.descricao);
         fieldObs.setText(this.dto.observacao);
         fieldValor.setText(Float.toString(this.dto.valor));
@@ -63,14 +61,12 @@ public class CadastroConsulta extends CadastroInterface {
         jLabel4 = new javax.swing.JLabel();
         comboDentista = new javax.swing.JComboBox<>();
         comboPagamento = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
         comboPaciente = new javax.swing.JComboBox<>();
         fieldValor = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         fieldObs = new javax.swing.JTextField();
         fieldDesc = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        comboProntuario = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(243, 102, 186));
         setMaximumSize(new java.awt.Dimension(626, 283));
@@ -92,10 +88,6 @@ public class CadastroConsulta extends CadastroInterface {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Valor");
-
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Prontuário");
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -125,28 +117,26 @@ public class CadastroConsulta extends CadastroInterface {
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fieldDesc, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fieldObs, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3)
                                     .addComponent(comboDentista, 0, 250, Short.MAX_VALUE)
-                                    .addComponent(comboPagamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(comboProntuario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(comboPagamento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel1)
-                                        .addComponent(jLabel4)
-                                        .addComponent(comboPaciente, 0, 250, Short.MAX_VALUE)
-                                        .addComponent(fieldValor)
-                                        .addComponent(fieldDesc)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel4)
+                                    .addComponent(comboPaciente, 0, 250, Short.MAX_VALUE)
+                                    .addComponent(fieldValor))))
                         .addGap(35, 35, 35))))
         );
         layout.setVerticalGroup(
@@ -169,13 +159,9 @@ public class CadastroConsulta extends CadastroInterface {
                     .addComponent(fieldValor)
                     .addComponent(comboPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel7))
+                .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(fieldDesc, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addComponent(comboProntuario))
+                .addComponent(fieldDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -197,7 +183,6 @@ public class CadastroConsulta extends CadastroInterface {
     private javax.swing.JComboBox<String> comboDentista;
     private javax.swing.JComboBox<String> comboPaciente;
     private javax.swing.JComboBox<String> comboPagamento;
-    private javax.swing.JComboBox<String> comboProntuario;
     private javax.swing.JTextField fieldDesc;
     private javax.swing.JTextField fieldObs;
     private javax.swing.JTextField fieldValor;
@@ -205,7 +190,6 @@ public class CadastroConsulta extends CadastroInterface {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     // End of variables declaration//GEN-END:variables

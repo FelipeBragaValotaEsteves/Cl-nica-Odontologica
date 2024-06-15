@@ -34,17 +34,25 @@ public class CadastroPaciente extends CadastroInterface {
     private CidadeDTO cidadadeDTO;
     private EnderecoDTO endereco;
     private CidadeController cidadeController;
+<<<<<<< HEAD
     private ProntuarioDTO prontuario;
+=======
+    private ProntuarioDTO prontuarioDTO;
+>>>>>>> main
     List<ContatoDTO> listaContatos = new ArrayList<>();
 
     @Override
     public DTO salvar() {
-        if (pacienteDTO == null || dtoContatoCelular == null || dtoContatoEmail == null) {
+        if (pacienteDTO == null || dtoContatoCelular == null || dtoContatoEmail == null || prontuarioDTO == null) {
             pacienteDTO = new PacienteDTO();
             dtoContatoCelular = new ContatoDTO();
             dtoContatoEmail = new ContatoDTO();
+<<<<<<< HEAD
             endereco = new EnderecoDTO();
             prontuario = new ProntuarioDTO();
+=======
+            prontuarioDTO = new ProntuarioDTO();
+>>>>>>> main
         }
 
         dtoContatoCelular.informacao = fieldCelular.getText();
@@ -72,6 +80,10 @@ public class CadastroPaciente extends CadastroInterface {
 
         pacienteDTO.prontuario = prontuario;
         prontuario.paciente = pacienteDTO;
+
+        prontuarioDTO.paciente = pacienteDTO;
+        
+        pacienteDTO.prontuario = prontuarioDTO;
 
         return pacienteDTO;
     }
