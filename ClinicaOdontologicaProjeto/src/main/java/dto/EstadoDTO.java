@@ -33,4 +33,8 @@ public class EstadoDTO extends DTO {
         dto.UF = e.getUF();
         return dto;
     }
+    
+    public String toString() {
+        return this.UF;
+    }
 }

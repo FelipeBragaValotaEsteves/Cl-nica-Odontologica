@@ -29,9 +29,7 @@ view\consulta\Consulta$1.class
 model\RegistroConsulta_.class
 model\Material_.class
 persistence\login\LoginDao.class
-view\cadastro\CadastroConsulta$2.class
 dto\ProntuarioDTO.class
-persistence\registroconsulta\RegistroConsultaImpl.class
 model\Model.class
 model\Login_.class
 view\menu\Menu$9.class
@@ -55,6 +53,7 @@ persistence\paciente\PacienteDao.class
 persistence\prontuario\ProntuarioImpl.class
 model\Consulta.class
 model\Cidade_.class
+view\cadastro\CadastroPaciente$1.class
 persistence\material\MaterialImpl.class
 view\cadastro\CadastroAgendamento.class
 persistence\cidade\CidadeImpl.class
@@ -67,7 +66,6 @@ view\consulta\Consulta$2.class
 view\menu\Menu.class
 persistence\agendamento\AgendamentoDao.class
 view\util\Util.class
-view\cadastro\CadastroConsulta$1.class
 persistence\Dao.class
 persistence\funcao\FuncaoImpl.class
 view\menu\Menu$15.class
@@ -79,7 +77,6 @@ model\RegistroConsulta.class
 persistence\material\MaterialDao.class
 controller\ConsultaController.class
 controller\PacienteController.class
-persistence\registroconsulta\RegistroConsultaDao.class
 dto\DTO.class
 model\Funcionario_.class
 view\menu\Menu$12.class

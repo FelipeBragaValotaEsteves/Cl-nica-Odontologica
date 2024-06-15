@@ -17,7 +17,7 @@ public class LoginController implements Controller {
 
         Login login = (Login) dao.validaLogin(dto.usuario, dto.senha);
         
-        System.out.println("lOGIN DTO QUE VOLTOU DA VALIDACAO PARA MEU CONTROLLER : " + login);
+        //System.out.println("lOGIN DTO QUE VOLTOU DA VALIDACAO PARA MEU CONTROLLER : " + login);
 
 
         if (login != null) {

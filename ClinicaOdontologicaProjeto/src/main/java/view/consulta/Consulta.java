@@ -146,11 +146,25 @@ public class Consulta extends javax.swing.JDialog {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+<<<<<<< HEAD
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(260, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(257, 257, 257))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(24, 24, 24))
+=======
             .addGap(0, 50, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 50, Short.MAX_VALUE)
+>>>>>>> main
         );
 
         panelFiltros.add(jPanel4, java.awt.BorderLayout.LINE_END);
@@ -199,6 +213,8 @@ public class Consulta extends javax.swing.JDialog {
         jScrollPane1.setBackground(new java.awt.Color(244, 136, 204));
 
         jTable1.setBackground(new java.awt.Color(243, 102, 186));
+        jTable1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -271,7 +287,6 @@ public class Consulta extends javax.swing.JDialog {
 
     private synchronized void atualiza() {
         lista = controller.getListaDados();
-        System.out.println(lista);
         String names[] = controller.getTitulosColunas();
         Object[][] data = new Object[lista.size()][names.length];
         for (int i = 0; i < lista.size(); i++) {

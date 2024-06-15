@@ -14,8 +14,6 @@ public class ProntuarioDTO extends DTO {
         Prontuario prontuario = new Prontuario();
         prontuario.setId(id != null ? Long.valueOf(id) : 0l);
         PacienteImpl pac = new PacienteImpl();
-        prontuario.setPaciente(pac.getPacienteById());
-        prontuario.setPaciente(paciente.builder());
         return prontuario;
     }
 

@@ -3,13 +3,14 @@ package dto;
 import model.Endereco;
 import java.util.LinkedList;
 import java.util.List;
+import model.Cidade;
 import persistence.cidade.CidadeImpl;
 
 public class EnderecoDTO extends DTO {
 
     public String rua;
     public String bairro;
-    public Long idCidade;
+    public CidadeDTO cidade;
 
     @Override
     public Object builder() {
@@ -17,7 +18,7 @@ public class EnderecoDTO extends DTO {
         endereco.setId(id != null ? Long.valueOf(id) : 0l);
         endereco.setRua(rua);
         CidadeImpl cid = new CidadeImpl();
-        endereco.setCidade(cid.getCidadeById());
+        endereco.setCidade((Cidade) cidade.builder());
         return endereco;
     }
 
@@ -33,7 +34,6 @@ public class EnderecoDTO extends DTO {
         EnderecoDTO dto = new EnderecoDTO();
         dto.id = e.getId();
         dto.rua = e.getRua();
-        dto.idCidade = e.getCidade().getId();
         return dto;
     }
 }

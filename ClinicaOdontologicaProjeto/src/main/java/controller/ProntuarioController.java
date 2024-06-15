@@ -13,10 +13,10 @@ public class ProntuarioController implements Controller {
 
     @Override
     public void salvar(DTO dto) throws Exception {
-        ProntuarioDTO pacienteDTO = (ProntuarioDTO) dto;
+        ProntuarioDTO prontuarioDTO = (ProntuarioDTO) dto;
 
-        if (validaCampos(pacienteDTO)) {
-            dao.atualiza(pacienteDTO.builder());
+        if (validaCampos(prontuarioDTO)) {
+            dao.atualiza(prontuarioDTO.builder());
         } else {
             throw new Exception("Preencha todos os campos obrigatórios (*)!");
         }

@@ -24,7 +24,6 @@ class Login implements Serializable, Model {
     private Long id;
     private String usuario;
     private String senha;
-    @JoinColumn(name = "funcionario_id")
     @OneToOne(fetch = FetchType.EAGER)
     private Funcionario funcionario;
 

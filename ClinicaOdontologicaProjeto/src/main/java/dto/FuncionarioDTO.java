@@ -36,8 +36,8 @@ public class FuncionarioDTO extends DTO {
         dto.nomeFuncionario = f.getNome();
         dto.id = f.getId();
         dto.numeroRegistro = f.getRg();
-        LoginDTO loginDto = new LoginDTO();
-        dto.login = (LoginDTO) loginDto.converte(f.getLogin());
+        //LoginDTO loginDto = new LoginDTO();
+        //dto.login = (LoginDTO) loginDto.converte(f.getLogin());
         dto.funcao = f.getFuncao();
         return dto;
     }

@@ -58,7 +58,7 @@ public class CidadeController implements Controller {
             return false;
         }
 
-        if (cidade.idEstado == null) {
+        if (cidade.estado == null) {
             return false;
         }
         return true;
