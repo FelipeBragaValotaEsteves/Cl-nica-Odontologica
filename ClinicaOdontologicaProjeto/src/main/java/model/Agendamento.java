@@ -23,8 +23,7 @@ class Agendamento implements Serializable, Model {
     private Long id;
     @Temporal(TemporalType.DATE)
     private Date data;
-    @Temporal(TemporalType.TIME)
-    private Date hora;
+    private String hora;
     @ManyToOne
     @JoinColumn(name = "dentista_id")
     private Funcionario funcionario;

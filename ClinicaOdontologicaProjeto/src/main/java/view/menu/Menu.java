@@ -15,6 +15,18 @@ import view.cadastro.CadastroFuncionario;
 import view.cadastro.CadastroMaterial;
 import view.cadastro.CadastroPaciente;
 import view.consulta.Consulta;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class Menu extends javax.swing.JFrame {
 
@@ -39,58 +51,51 @@ public class Menu extends javax.swing.JFrame {
         setTitle("Menu");
         setLocationRelativeTo(null);
         nomeiaMenus();
-//        labelPerfil.setText(login.usuario);
 
-//        System.out.println(login.funcionario.funcao.getDescricao());
-        menuConsulta.add(consultaAgendamento);
-        menuConsulta.add(consultaConsulta);
-        menuConsulta.add(consultaFuncionario);
-        menuConsulta.add(consultaPaciente);
-        menuConsulta.add(consultaMaterial);
+        switch (login.funcionario.funcao.getDescricao()) {
+            case "dentista" -> {
+                menuConsulta.add(consultaAgendamento);
+                menuConsulta.add(consultaConsulta);
+                menuConsulta.add(consultaFuncionario);
+                menuConsulta.add(consultaPaciente);
+                menuConsulta.add(consultaMaterial);
 
-        menuCadastro.add(cadastroAgendamento);
-        menuCadastro.add(cadastroConsulta);
-        menuCadastro.add(cadastroFuncionario);
-        menuCadastro.add(cadastroPaciente);
-        menuCadastro.add(cadastroMaterial);
+                menuCadastro.add(cadastroAgendamento);
+                menuCadastro.add(cadastroConsulta);
+                menuCadastro.add(cadastroFuncionario);
+                menuCadastro.add(cadastroPaciente);
+                menuCadastro.add(cadastroMaterial);
 
-        menuRelatorios.add(relatorioAgendamento);
-        menuRelatorios.add(relatorioConsulta);
-        menuRelatorios.add(relatorioFuncionario);
-        menuRelatorios.add(relatorioPaciente);
-        menuRelatorios.add(relatorioMaterial);
+                menuRelatorios.add(relatorioAgendamento);
+                menuRelatorios.add(relatorioConsulta);
+                menuRelatorios.add(relatorioFuncionario);
+                menuRelatorios.add(relatorioPaciente);
+                menuRelatorios.add(relatorioMaterial);
+            }
+            case "recepcionista" -> {
+                menuConsulta.add(consultaAgendamento);
+                menuConsulta.add(consultaPaciente);
 
-//        switch (login.funcionario.funcao.getDescricao()) {
-//            case "DENTISTA":
-//                menuConsulta.add(consultaAgendamento);
-//                menuConsulta.add(consultaConsulta);
-//                menuConsulta.add(consultaFuncionario);
-//                menuConsulta.add(consultaPaciente);
-//                menuConsulta.add(consultaMaterial);
-//
-//                menuCadastro.add(cadastroAgendamento);
-//                menuCadastro.add(cadastroConsulta);
-//                menuCadastro.add(cadastroFuncionario);
-//                menuCadastro.add(cadastroPaciente);
-//                menuCadastro.add(cadastroMaterial);
-//                break;
-//            case "RECEPCIONISTA":
-//                menuConsulta.add(consultaAgendamento);
-//                menuConsulta.add(consultaPaciente);
-//
-//                menuCadastro.add(cadastroAgendamento);
-//                menuCadastro.add(cadastroPaciente);
-//                break;
-//            case "GERENTE":
-//                menuConsulta.add(consultaFuncionario);
-//                menuConsulta.add(consultaMaterial);
-//
-//                menuCadastro.add(cadastroFuncionario);
-//                menuCadastro.add(cadastroMaterial);
-//                break;
-//            default:
-//                throw new AssertionError();
-//        };
+                menuCadastro.add(cadastroAgendamento);
+                menuCadastro.add(cadastroPaciente);
+
+                menuRelatorios.add(relatorioAgendamento);
+                menuRelatorios.add(relatorioPaciente);
+            }
+            case "gerente" -> {
+                menuConsulta.add(consultaFuncionario);
+                menuConsulta.add(consultaMaterial);
+
+                menuCadastro.add(cadastroFuncionario);
+                menuCadastro.add(cadastroMaterial);
+
+                menuRelatorios.add(relatorioFuncionario);
+                menuRelatorios.add(relatorioMaterial);
+            }
+            default ->
+                throw new AssertionError();
+        }
+        ;
         //MENU CADASTRO ----------------------------------------------------------------------
         cadastroAgendamento.addActionListener(new java.awt.event.ActionListener() {
             @Override
@@ -171,43 +176,95 @@ public class Menu extends javax.swing.JFrame {
         relatorioAgendamento.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Consulta telaConsulta = new Consulta(new CadastroAgendamento(), new AgendamentoController());
-                telaConsulta.setVisible(true);
+                try {
+                    Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "123");
+                    HashMap parameters = new HashMap();
+
+                    JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/relatorios/Agendamento.jasper"));
+
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(jr, parameters, conn);
+
+                    JasperViewer viw = new JasperViewer(jasperPrint, false);
+                    viw.setVisible(true);
+                } catch (JRException | SQLException ex) {
+                     JOptionPane.showMessageDialog(null, "Não foi possível gerar este relatório!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
         relatorioConsulta.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Consulta telaConsulta = new Consulta(new CadastroConsulta(), new ConsultaController());
-                telaConsulta.setVisible(true);
+                try {
+                    Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "123");
+                    HashMap parameters = new HashMap();
+
+                    JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/relatorios/Consulta.jasper"));
+
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(jr, parameters, conn);
+
+                    JasperViewer viw = new JasperViewer(jasperPrint, false);
+                    viw.setVisible(true);
+                } catch (JRException | SQLException ex) {
+                     JOptionPane.showMessageDialog(null, "Não foi possível gerar este relatório!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
         relatorioFuncionario.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-//                FuncionarioController fc = new FuncionarioController();
-//                
-//                HashMap p = new HashMap();
-//                JasperReport jr = (JasperReport) JRLoader.loadObject(getClass.getResource("/relatorios/Funcionario.jrxml"));
-//                JasperPrint jp = JasperFillManager.fillReport(jr, p, fc.getConnJBDC());
+                try {
+                    Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "123");
+                    HashMap parameters = new HashMap();
+
+                    JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/relatorios/Funcionario.jasper"));
+
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(jr, parameters, conn);
+
+                    JasperViewer viw = new JasperViewer(jasperPrint, false);
+                    viw.setVisible(true);
+                } catch (JRException | SQLException ex) {
+                     JOptionPane.showMessageDialog(null, "Não foi possível gerar este relatório!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
         relatorioMaterial.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Consulta telaConsulta = new Consulta(new CadastroMaterial(), new MaterialController());
-                telaConsulta.setVisible(true);
+                try {
+                    Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "123");
+                    HashMap parameters = new HashMap();
+
+                    JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/relatorios/Material.jasper"));
+
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(jr, parameters, conn);
+
+                    JasperViewer viw = new JasperViewer(jasperPrint, false);
+                    viw.setVisible(true);
+                } catch (JRException | SQLException ex) {
+                     JOptionPane.showMessageDialog(null, "Não foi possível gerar este relatório!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 
         relatorioPaciente.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Consulta telaConsulta = new Consulta(new CadastroPaciente(), new PacienteController());
-                telaConsulta.setVisible(true);
+                try {
+                    Connection conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "123");
+                    HashMap parameters = new HashMap();
+
+                    JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/relatorios/Paciente.jasper"));
+
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(jr, parameters, conn);
+
+                    JasperViewer viw = new JasperViewer(jasperPrint, false);
+                    viw.setVisible(true);
+                } catch (JRException | SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Não foi possível gerar este relatório!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
     }

@@ -1,6 +1,7 @@
 package view.consulta;
 
 import controller.Controller;
+import dto.ConsultaDTO;
 import dto.DTO;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -48,10 +49,9 @@ public class Consulta extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(650, 470));
         setMinimumSize(new java.awt.Dimension(650, 470));
-        setPreferredSize(new java.awt.Dimension(650, 470));
         setSize(new java.awt.Dimension(650, 470));
 
         jPanel1.setBackground(new java.awt.Color(243, 102, 186));
@@ -216,7 +216,7 @@ public class Consulta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Item removido com sucesso!", "Error", JOptionPane.DEFAULT_OPTION);
             atualiza();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível remover este item!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnRemoverActionPerformed
 
@@ -230,7 +230,7 @@ public class Consulta extends javax.swing.JFrame {
             new Cadastro(null, true, cadastroInterface, controller).setVisible(true);
             atualiza();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Não foi possível editar este item!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -242,7 +242,7 @@ public class Consulta extends javax.swing.JFrame {
         try {
             atualiza();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Não foi encontrado resultados!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
 

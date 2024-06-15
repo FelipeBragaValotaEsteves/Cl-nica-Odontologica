@@ -34,6 +34,10 @@ public class EnderecoDTO extends DTO {
         EnderecoDTO dto = new EnderecoDTO();
         dto.id = e.getId();
         dto.rua = e.getRua();
+        CidadeDTO cidDto = new CidadeDTO();
+        dto.cidade = (CidadeDTO) cidDto.converte(e.getCidade());
+        dto.bairro = e.getBairro();
+
         return dto;
     }
 }

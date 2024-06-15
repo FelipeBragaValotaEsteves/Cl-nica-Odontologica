@@ -142,7 +142,7 @@ public class Cadastro extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso!", "Sucesso", JOptionPane.DEFAULT_OPTION);
             dispose();
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, "Não foi possível salvar este item!", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, ex, "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 

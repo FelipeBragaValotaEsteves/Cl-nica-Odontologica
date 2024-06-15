@@ -5,20 +5,48 @@ import java.util.List;
 import model.RegistroConsulta;
 import persistence.consulta.ConsultaImpl;
 import persistence.prontuario.ProntuarioImpl;
+import model.Consulta;
+import model.Funcionario;
+import model.Paciente;
 
 public class RegistroConsultaDTO extends DTO {
 
     public String descricao;
+    public ConsultaDTO consulta;
 
     @Override
     public Object builder() {
         RegistroConsulta registroConsulta = new RegistroConsulta();
         registroConsulta.setId(id != null ? Long.valueOf(id) : 0l);
         registroConsulta.setDescricao(descricao);
-        ConsultaImpl con = new ConsultaImpl();
-        registroConsulta.setConsulta(con.getConsultaById());
-        ProntuarioImpl pron = new ProntuarioImpl();
-        registroConsulta.setProntuario(pron.getProntuarioById());
+        Consulta consultaModel = new Consulta();
+        consultaModel.setId(consulta.id);
+        consultaModel.setDataConsulta(consulta.data);
+        consultaModel.setFormaPagamento(consulta.formaPagamento);
+        consultaModel.setObservacao(consulta.observacao);
+        consultaModel.setValor(consulta.valor);
+        consultaModel.setFormaPagamento(consulta.formaPagamento);
+
+        Funcionario func = new Funcionario();
+        func.setId(consulta.funcionario.id);
+        func.setFuncao(consulta.funcionario.funcao);
+        func.setNome(consulta.funcionario.nomeFuncionario);
+        func.setRg(consulta.funcionario.numeroRegistro);
+        func.setNome(consulta.funcionario.nomeFuncionario);
+        consultaModel.setFuncionario(func);
+
+        Paciente pac = new Paciente();
+        pac.setCpf(consulta.paciente.cpf);
+        pac.setConvenio(consulta.paciente.convenio);
+        pac.setComplemento(consulta.paciente.complemento);
+        pac.setNome(consulta.paciente.nome);
+        pac.setResponsavel(consulta.paciente.responsavel);
+        pac.setId(consulta.paciente.id);
+       
+        consultaModel.setPaciente(pac);
+
+        consultaModel.setRegistroConsulta(registroConsulta);
+        registroConsulta.setConsulta(consultaModel);
 
         return registroConsulta;
     }
@@ -36,6 +64,10 @@ public class RegistroConsultaDTO extends DTO {
         dto.id = rc.getId();
         dto.descricao = rc.getDescricao();
 
+        ConsultaDTO con = new ConsultaDTO();
+        con.id = rc.getConsulta().getId();
+
+        dto.consulta = con;
         return dto;
     }
 }

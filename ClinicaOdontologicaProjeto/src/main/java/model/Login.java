@@ -25,6 +25,7 @@ class Login implements Serializable, Model {
     private String usuario;
     private String senha;
     @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "funcionario_id", referencedColumnName = "id")
     private Funcionario funcionario;
 
     @Override

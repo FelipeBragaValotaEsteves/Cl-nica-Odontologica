@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +22,7 @@ public @Data class RegistroConsulta implements Serializable, Model {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String descricao;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "consulta_id")
     private Consulta consulta;
     @ManyToOne

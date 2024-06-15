@@ -13,12 +13,7 @@ public class LoginController implements Controller {
 
     public LoginDTO validaLogin(LoginDTO dto) {
 
-        System.out.println("lOGIN DTO QUE CHEGOU : " + dto.usuario + " - " + dto.senha);
-
         Login login = (Login) dao.validaLogin(dto.usuario, dto.senha);
-        
-        //System.out.println("lOGIN DTO QUE VOLTOU DA VALIDACAO PARA MEU CONTROLLER : " + login);
-
 
         if (login != null) {
             LoginDTO loginDto = new LoginDTO();

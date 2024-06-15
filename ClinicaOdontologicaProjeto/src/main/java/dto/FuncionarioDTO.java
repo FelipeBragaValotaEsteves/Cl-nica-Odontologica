@@ -18,8 +18,17 @@ public class FuncionarioDTO extends DTO {
         funcionario.setNome(nomeFuncionario);
         funcionario.setId(id != null ? Long.valueOf(id) : 0l);
         funcionario.setRg(numeroRegistro);
-        funcionario.setLogin((Login) login.builder());
+
+        Login loginModel = new Login();
+        loginModel.setId(login.id);
+        loginModel.setSenha(login.senha);
+        loginModel.setUsuario(login.usuario);
+        loginModel.setFuncionario(funcionario);
+
+        funcionario.setLogin(loginModel);
         funcionario.setFuncao(funcao);
+
+        System.out.println(funcionario.getRg());
         return funcionario;
     }
 
@@ -36,15 +45,15 @@ public class FuncionarioDTO extends DTO {
         dto.nomeFuncionario = f.getNome();
         dto.id = f.getId();
         dto.numeroRegistro = f.getRg();
-        //LoginDTO loginDto = new LoginDTO();
-        //dto.login = (LoginDTO) loginDto.converte(f.getLogin());
+        LoginDTO loginDto = new LoginDTO();
+        dto.login = (LoginDTO) loginDto.converte(f.getLogin());
         dto.funcao = f.getFuncao();
         return dto;
     }
 
     @Override
     public String toString() {
-        return "Funcionario [id=" + id + ", nome=" + nomeFuncionario + ", rg=" + numeroRegistro + "]";
+        return this.nomeFuncionario;
     }
 
 }
