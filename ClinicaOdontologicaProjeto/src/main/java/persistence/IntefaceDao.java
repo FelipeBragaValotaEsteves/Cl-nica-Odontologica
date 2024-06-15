@@ -16,12 +16,12 @@ public interface IntefaceDao {
     }
 
     public default void remove(Integer id,Class clazz){
-        Dao.getInstance ().remove(id,clazz);
+        Dao.getInstance().remove(id,clazz);
     }
     public default List listar(Class clazz,String where){
-        return Dao.getInstance ().listar(clazz, where);
+        return Dao.getInstance().listar(clazz, where);
     }
     public default List listar(Class clazz){
-        return Dao.getInstance ().listar(clazz, "");
+        return Dao.getInstance().listar(clazz, "");
     }
 }

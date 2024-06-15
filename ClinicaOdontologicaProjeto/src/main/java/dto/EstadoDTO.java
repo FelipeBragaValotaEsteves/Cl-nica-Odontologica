@@ -28,7 +28,7 @@ public class EstadoDTO extends DTO {
 
     public Object converte(Estado e) {
         EstadoDTO dto = new EstadoDTO();
-        dto.id = e.getId().toString();
+        dto.id = e.getId();
         dto.nome = e.getNome();
         dto.UF = e.getUF();
         return dto;

@@ -31,9 +31,13 @@ public class CidadeDTO extends DTO {
 
     public Object converte(Cidade c) {
         CidadeDTO dto = new CidadeDTO();
-        dto.id = c.getId().toString();
+        dto.id = c.getId();
         dto.nome = c.getNome();
         dto.idEstado = c.getEstado().getId();
         return dto;
+    }
+
+    public String toString() {
+        return this.nome;
     }
 }

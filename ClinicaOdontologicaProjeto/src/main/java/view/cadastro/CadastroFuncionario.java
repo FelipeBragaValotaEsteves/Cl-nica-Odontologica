@@ -1,16 +1,18 @@
 package view.cadastro;
 
+import controller.PacienteController;
 import dto.DTO;
 import dto.FuncionarioDTO;
+import model.Funcao;
+import view.util.Util;
 
-/**
- *
- * @author lavota
- */
 public class CadastroFuncionario extends CadastroInterface {
-
+    
+    Util util = new Util();
+    
     public CadastroFuncionario() {
         initComponents();
+        util.preencheComboEnum(comboFuncao, Funcao.class);
     }
 
     private FuncionarioDTO dto;
@@ -21,7 +23,7 @@ public class CadastroFuncionario extends CadastroInterface {
             dto = new FuncionarioDTO();
         }
 
-        //dto.funcao = comboFuncao.getText();
+        dto.funcao = (Funcao) comboFuncao.getSelectedItem();
         dto.nomeFuncionario = fieldNome.getText();
         dto.numeroRegistro = fieldRg.getText();
         dto.login.senha = fieldSenha.getText();
@@ -33,7 +35,7 @@ public class CadastroFuncionario extends CadastroInterface {
     @Override
     public void preencheCampos(DTO dto) {
         this.dto = (FuncionarioDTO) dto;
-        //comboFuncao.setText(this.dto.funcao);
+        comboFuncao.setSelectedItem(this.dto.funcao);
         fieldNome.setText(this.dto.nomeFuncionario);
         fieldRg.setText(this.dto.numeroRegistro);
         fieldSenha.setText(this.dto.login.senha);

@@ -31,7 +31,7 @@ public class EnderecoDTO extends DTO {
 
     public Object converte(Endereco e) {
         EnderecoDTO dto = new EnderecoDTO();
-        dto.id = e.getId().toString();
+        dto.id = e.getId();
         dto.rua = e.getRua();
         dto.idCidade = e.getCidade().getId();
         return dto;

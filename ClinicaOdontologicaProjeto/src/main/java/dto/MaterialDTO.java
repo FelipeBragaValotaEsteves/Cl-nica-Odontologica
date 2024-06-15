@@ -22,19 +22,22 @@ public class MaterialDTO extends DTO {
     }
 
     public List getListaDados(List<Material> dados) {
+        System.out.println(dados.getClass());
         List dadosDTO = new LinkedList();
         for (Material dado : dados) {
             dadosDTO.add(converte(dado));
         }
+        System.out.println(dadosDTO);
         return dadosDTO;
     }
 
     private Object converte(Material m) {
+        System.out.println(m);
         MaterialDTO dto = new MaterialDTO();
-        dto.id = m.getId().toString();
+        dto.id = m.getId();
         dto.nome = m.getNome();
         dto.qtdMinima = m.getQtdMinima();
-
+        dto.qtdEstoque = m.getQtdEstoque();
         return dto;
     }
 }
