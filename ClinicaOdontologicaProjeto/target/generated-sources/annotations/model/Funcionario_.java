@@ -9,11 +9,7 @@ import model.Consulta;
 import model.Funcao;
 import model.Login;
 
-<<<<<<< HEAD
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-06-11T00:31:24", comments="EclipseLink-2.7.12.v20230209-rNA")
-=======
-@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-06-14T12:39:59", comments="EclipseLink-2.7.12.v20230209-rNA")
->>>>>>> main
+@Generated(value="org.eclipse.persistence.internal.jpa.modelgen.CanonicalModelProcessor", date="2024-06-14T21:45:11", comments="EclipseLink-2.7.12.v20230209-rNA")
 @StaticMetamodel(Funcionario.class)
 public class Funcionario_ { 
 

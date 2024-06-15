@@ -34,11 +34,8 @@ public class CadastroPaciente extends CadastroInterface {
     private CidadeDTO cidadadeDTO;
     private EnderecoDTO endereco;
     private CidadeController cidadeController;
-<<<<<<< HEAD
-    private ProntuarioDTO prontuario;
-=======
     private ProntuarioDTO prontuarioDTO;
->>>>>>> main
+
     List<ContatoDTO> listaContatos = new ArrayList<>();
 
     @Override
@@ -47,12 +44,8 @@ public class CadastroPaciente extends CadastroInterface {
             pacienteDTO = new PacienteDTO();
             dtoContatoCelular = new ContatoDTO();
             dtoContatoEmail = new ContatoDTO();
-<<<<<<< HEAD
             endereco = new EnderecoDTO();
-            prontuario = new ProntuarioDTO();
-=======
             prontuarioDTO = new ProntuarioDTO();
->>>>>>> main
         }
 
         dtoContatoCelular.informacao = fieldCelular.getText();
@@ -78,11 +71,7 @@ public class CadastroPaciente extends CadastroInterface {
         pacienteDTO.nome = fieldNome.getText();
         pacienteDTO.responsavel = fieldResponsavel.getText();
 
-        pacienteDTO.prontuario = prontuario;
-        prontuario.paciente = pacienteDTO;
-
         prontuarioDTO.paciente = pacienteDTO;
-        
         pacienteDTO.prontuario = prontuarioDTO;
 
         return pacienteDTO;
@@ -298,9 +287,8 @@ public class CadastroPaciente extends CadastroInterface {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel13)
-                                .addComponent(jLabel14)))
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel13))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(fielNCasa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
