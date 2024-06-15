@@ -13,9 +13,13 @@ public class PacienteController implements Controller {
 
     @Override
     public void salvar(DTO dto) throws Exception {
+        System.out.println(dto);
+
         PacienteDTO pacienteDTO = (PacienteDTO) dto;
+        System.out.println(pacienteDTO);
 
         if (validaCampos(pacienteDTO)) {
+            System.out.println(pacienteDTO.builder());
             dao.atualiza(pacienteDTO.builder());
         } else {
             throw new Exception("Preencha todos os campos obrigatórios (*)!");
@@ -48,29 +52,30 @@ public class PacienteController implements Controller {
     @Override
     public List getListaDados() {
         List<Paciente> dados = dao.listar(Paciente.class);
+        System.out.println(dados);
         PacienteDTO pacienteDTO = new PacienteDTO();
         return pacienteDTO.getListaDados(dados);
     }
 
     public boolean validaCampos(PacienteDTO paciente) {
 
-        if (paciente.nome == null || paciente.nome.isEmpty()) {
+        if (paciente.nome == null) {
             return false;
         }
 
-        if (paciente.dataNascimento == null || paciente.dataNascimento.toString().isEmpty()) {
+        if (paciente.dataNascimento == null) {
             return false;
         }
 
-        if (paciente.cpf == null || paciente.cpf.isEmpty()) {
-            return false;
-        }
-        
-        if(paciente.endereco == null) {
+        if (paciente.cpf == null) {
             return false;
         }
 
-        if (paciente.numeroCasa == null || paciente.numeroCasa.toString().isEmpty()) {
+        if (paciente.endereco == null) {
+            return false;
+        }
+
+        if (paciente.numeroCasa == null) {
             return false;
         }
 

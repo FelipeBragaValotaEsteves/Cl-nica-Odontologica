@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import model.Cidade;
 import model.Contato;
 import model.Endereco;
 import model.Paciente;
@@ -41,13 +42,18 @@ public class PacienteDTO extends DTO {
 
     public List getListaDados(List<Paciente> dados) {
         List dadosDTO = new LinkedList();
+        
+        System.out.println("Tamanho lista : " + dados.size());
         for (Paciente dado : dados) {
+            System.out.println("dadoooooo " + dado);
             dadosDTO.add(converte(dado));
         }
         return dadosDTO;
     }
 
     public Object converte(Paciente p) {
+        
+        System.out.println("pppppppppppppppp " + p);
 
         PacienteDTO dto = new PacienteDTO();
         dto.id = p.getId();
@@ -60,7 +66,9 @@ public class PacienteDTO extends DTO {
         dto.responsavel = p.getResponsavel();
 
         ProntuarioDTO prontuarioDTO = new ProntuarioDTO();
-        dto.endereco = (EnderecoDTO) prontuarioDTO.converte(p.getProntuario());
+        prontuarioDTO.id = p.getProntuario().getId();
+
+        dto.prontuario = prontuarioDTO;
 
         EnderecoDTO enderecoDTO = new EnderecoDTO();
         dto.endereco = (EnderecoDTO) enderecoDTO.converte(p.getEndereco());

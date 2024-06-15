@@ -42,7 +42,7 @@ public class EnderecoController implements Controller {
     @Override
     public Object[] getDados(DTO o) {
         EnderecoDTO dto = (EnderecoDTO) o;
-        return new Object[]{dto.id, dto.rua, dto.idCidade};
+        return new Object[]{dto.id, dto.rua, dto.cidade.nome};
     }
 
     @Override
@@ -62,7 +62,7 @@ public class EnderecoController implements Controller {
             return false;
         }
 
-        if (endereco.idCidade == null) {
+        if (endereco.cidade == null) {
             return false;
         }
         return true;

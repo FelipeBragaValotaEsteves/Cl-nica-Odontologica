@@ -1,5 +1,6 @@
 package persistence.login;
 
+import java.util.List;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 import model.Login;
@@ -16,7 +17,8 @@ public class LoginImpl implements LoginDao {
         query.setParameter("senha", senha);
 
         try {
-            return query.getSingleResult();
+            List resultList =query.getResultList();
+            return resultList.isEmpty()?null:resultList.get(0);
         } catch (NoResultException e) {
             return null;
         }

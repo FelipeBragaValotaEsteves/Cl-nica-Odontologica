@@ -9,15 +9,14 @@ import persistence.estado.EstadoImpl;
 public class CidadeDTO extends DTO {
 
     public String nome;
-    public Long idEstado;
+    public EstadoDTO estado;
 
     @Override
     public Object builder() {
         Cidade cidade = new Cidade();
         cidade.setId(id != null ? Long.valueOf(id) : 0l);
         cidade.setNome(nome);
-        EstadoImpl est = new EstadoImpl();
-        cidade.setEstado(est.getEstadoById());
+        cidade.setEstado((Estado) estado.builder());
         return cidade;
     }
 
@@ -33,7 +32,8 @@ public class CidadeDTO extends DTO {
         CidadeDTO dto = new CidadeDTO();
         dto.id = c.getId();
         dto.nome = c.getNome();
-        dto.idEstado = c.getEstado().getId();
+        EstadoDTO est = new EstadoDTO();
+        dto.estado = (EstadoDTO) est.converte(c.getEstado());
         return dto;
     }
 
