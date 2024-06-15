@@ -33,7 +33,7 @@ public class CadastroAgendamento extends CadastroInterface{
         dto.funcionario = (FuncionarioDTO) comboDentista.getSelectedItem();
         dto.paciente = (PacienteDTO) comboPaciente.getSelectedItem();
         dto.data = fieldData.getDate();
-        //dto.hora = fieldHora.getDate();
+        dto.hora = fieldHora.getText();
 
         return dto;
     }
@@ -44,7 +44,7 @@ public class CadastroAgendamento extends CadastroInterface{
         comboDentista.setSelectedItem(this.dto.funcionario);
         comboPaciente.setSelectedItem(this.dto.paciente);
         fieldData.setDate(this.dto.data);
-        //fieldHora.setDate(this.dto.hora);
+        fieldHora.setText(this.dto.hora);
     }
 
     @SuppressWarnings("unchecked")

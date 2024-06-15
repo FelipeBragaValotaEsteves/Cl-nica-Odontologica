@@ -19,7 +19,7 @@ public class Util {
         T[] values = enumClass.getEnumConstants();
 
         for (T value : values) {
-            comboBox.addItem(value.toString());
+            comboBox.addItem(value);
         }
     }
 }

@@ -1,19 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package view.login;
 
 import controller.FuncionarioController;
 import controller.LoginController;
 import dto.LoginDTO;
 import javax.swing.JOptionPane;
+
 import view.menu.Menu;
 
-/**
- *
- * @author lavota
- */
+import dto.LoginDTO;
+import view.menu.Menu;
+
+
 public class Login extends javax.swing.JFrame {
 
     LoginController loginController = new LoginController();
@@ -141,14 +139,14 @@ public class Login extends javax.swing.JFrame {
 
         LoginDTO loginDTOEncontrado = loginController.validaLogin(loginDTO);
 
-//        System.out.println("lOGIN DTO DEPOIS DE VALIDAR : " + loginDTOEncontrado);
-//        if (loginDTOEncontrado != null) {
-            Menu menu = new Menu(loginDTO);
+        System.out.println("lOGIN DTO DEPOIS DE VALIDAR : " + loginDTOEncontrado);
+        if (loginDTOEncontrado != null) {
+            Menu menu = new Menu(loginDTOEncontrado);
             menu.setVisible(true);
             dispose();
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!", "Error", JOptionPane.ERROR_MESSAGE);
-//        }
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
 

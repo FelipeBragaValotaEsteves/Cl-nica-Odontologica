@@ -33,7 +33,7 @@ public @Data class Paciente implements Serializable, Model {
     private String complemento;
     private String convenio;
     private String responsavel;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "prontuario_id")
     private Prontuario prontuario;
     @OneToMany(mappedBy = "paciente")

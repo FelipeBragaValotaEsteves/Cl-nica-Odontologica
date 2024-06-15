@@ -33,8 +33,12 @@ public class LoginDTO extends DTO {
         dto.usuario = l.getUsuario();
         dto.id = l.getId();
         dto.senha = l.getSenha();
-        FuncionarioDTO funcDto = new FuncionarioDTO();
-        dto.funcionario = (FuncionarioDTO) funcDto.converte(l.getFuncionario());
+
+        FuncionarioDTO funcDTO = new FuncionarioDTO();
+        funcDTO.funcao = l.getFuncionario().getFuncao();
+        funcDTO.id = l.getFuncionario().getId();
+        funcDTO.login = dto;
+        dto.funcionario = funcDTO;
         return dto;
     }
 
@@ -42,5 +46,4 @@ public class LoginDTO extends DTO {
     public String toString() {
         return "Login [id=" + id + ", usuario=" + usuario + ", senha=" + senha + "]";
     }
-
 }

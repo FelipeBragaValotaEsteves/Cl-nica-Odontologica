@@ -8,7 +8,7 @@ import model.Agendamento;
 public class AgendamentoDTO extends DTO {
 
     public Date data;
-    public Date hora;
+    public String hora;
     public FuncionarioDTO funcionario;
     public PacienteDTO paciente;
 

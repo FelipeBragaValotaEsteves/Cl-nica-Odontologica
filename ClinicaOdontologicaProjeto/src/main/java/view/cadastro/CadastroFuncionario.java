@@ -3,31 +3,38 @@ package view.cadastro;
 import controller.PacienteController;
 import dto.DTO;
 import dto.FuncionarioDTO;
+import dto.LoginDTO;
 import model.Funcao;
 import view.util.Util;
 
 public class CadastroFuncionario extends CadastroInterface {
-    
+
     Util util = new Util();
-    
+
     public CadastroFuncionario() {
         initComponents();
         util.preencheComboEnum(comboFuncao, Funcao.class);
     }
 
     private FuncionarioDTO dto;
+    private LoginDTO login;
 
     @Override
     public DTO salvar() {
-        if (dto == null) {
+        if (dto == null || login == null) {
             dto = new FuncionarioDTO();
+            login = new LoginDTO();
         }
 
         dto.funcao = (Funcao) comboFuncao.getSelectedItem();
         dto.nomeFuncionario = fieldNome.getText();
         dto.numeroRegistro = fieldRg.getText();
-        dto.login.senha = fieldSenha.getText();
-        dto.login.usuario = fieldUsuario.getText();
+        
+        login.funcionario = dto;
+        login.senha = fieldSenha.getText();
+        login.usuario = fieldUsuario.getText();
+        
+        dto.login = login;
 
         return dto;
     }
@@ -92,7 +99,7 @@ public class CadastroFuncionario extends CadastroInterface {
                     .addComponent(fieldNome)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 0, 0))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(fieldRg, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -101,14 +108,13 @@ public class CadastroFuncionario extends CadastroInterface {
                             .addComponent(jLabel8))
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(comboFuncao, 0, 250, Short.MAX_VALUE)
-                            .addComponent(fieldSenha))))
+                            .addComponent(fieldSenha)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel6))
+                                .addGap(0, 0, 0)))))
                 .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(

@@ -13,10 +13,10 @@ public class ConsultaController implements Controller {
 
     @Override
     public void salvar(DTO dto) throws Exception {
-        ConsultaDTO funcionarioDTO = (ConsultaDTO) dto;
+        ConsultaDTO consultaDTO = (ConsultaDTO) dto;
 
-        if (validaCampos(funcionarioDTO)) {
-            dao.atualiza(funcionarioDTO.builder());
+        if (validaCampos(consultaDTO)) {
+            dao.atualiza(consultaDTO.builder());
         } else {
             throw new Exception("Preencha todos os campos obrigatórios (*)!");
         }
@@ -48,8 +48,8 @@ public class ConsultaController implements Controller {
     @Override
     public List getListaDados() {
         List<Consulta> dados = dao.listar(Consulta.class);
-        ConsultaDTO funcionarioDTO = new ConsultaDTO();
-        return funcionarioDTO.getListaDados(dados);
+        ConsultaDTO consultaDTO = new ConsultaDTO();
+        return consultaDTO.getListaDados(dados);
     }
 
     public boolean validaCampos(ConsultaDTO consulta) {
@@ -67,6 +67,10 @@ public class ConsultaController implements Controller {
         }
 
         if (consulta.funcionario == null) {
+            return false;
+        }
+        
+         if (consulta.registroConsulta == null) {
             return false;
         }
 

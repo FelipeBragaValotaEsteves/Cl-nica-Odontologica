@@ -42,18 +42,14 @@ public class PacienteDTO extends DTO {
 
     public List getListaDados(List<Paciente> dados) {
         List dadosDTO = new LinkedList();
-        
-        System.out.println("Tamanho lista : " + dados.size());
+
         for (Paciente dado : dados) {
-            System.out.println("dadoooooo " + dado);
             dadosDTO.add(converte(dado));
         }
         return dadosDTO;
     }
 
     public Object converte(Paciente p) {
-        
-        System.out.println("pppppppppppppppp " + p);
 
         PacienteDTO dto = new PacienteDTO();
         dto.id = p.getId();
@@ -85,5 +81,10 @@ public class PacienteDTO extends DTO {
         }
 
         return dto;
+    }
+
+    @Override
+    public String toString() {
+        return this.nome;
     }
 }

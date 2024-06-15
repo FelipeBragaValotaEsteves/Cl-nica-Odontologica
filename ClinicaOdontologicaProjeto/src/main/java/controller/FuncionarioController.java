@@ -60,6 +60,15 @@ public class FuncionarioController implements Controller {
         if (func.numeroRegistro == null || func.numeroRegistro.isEmpty()) {
             return false;
         }
+        
+        if (func.login == null) {
+            return false;
+        }
+        
+        if (func.funcao == null) {
+            return false;
+        }
+        
         return true;
     }
 }

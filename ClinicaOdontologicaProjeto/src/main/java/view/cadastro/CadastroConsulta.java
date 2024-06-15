@@ -8,6 +8,7 @@ import dto.DTO;
 import dto.FuncionarioDTO;
 import dto.PacienteDTO;
 import dto.ProntuarioDTO;
+import dto.RegistroConsultaDTO;
 import model.FormaPagamento;
 import view.util.Util;
 
@@ -23,17 +24,23 @@ public class CadastroConsulta extends CadastroInterface {
     }
 
     private ConsultaDTO dto;
+    private RegistroConsultaDTO registroConsulta;
 
     @Override
     public DTO salvar() {
-        if (dto == null) {
+        if (dto == null || registroConsulta == null) {
             dto = new ConsultaDTO();
+            registroConsulta = new RegistroConsultaDTO();
         }
 
         dto.funcionario = (FuncionarioDTO) comboDentista.getSelectedItem();
         dto.paciente = (PacienteDTO) comboPaciente.getSelectedItem();
         dto.formaPagamento = (FormaPagamento) comboPagamento.getSelectedItem();
-        dto.registroConsulta.descricao = fieldDesc.getText();
+        
+        this.registroConsulta.descricao = fieldDesc.getText();
+        this.registroConsulta.consulta = dto;
+                
+        dto.registroConsulta = this.registroConsulta;
         dto.observacao = fieldObs.getText();
         dto.valor = Float.parseFloat(fieldValor.getText());
 
@@ -120,7 +127,7 @@ public class CadastroConsulta extends CadastroInterface {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel6))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(fieldDesc, javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,7 +171,7 @@ public class CadastroConsulta extends CadastroInterface {
                 .addComponent(fieldDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fieldObs, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );

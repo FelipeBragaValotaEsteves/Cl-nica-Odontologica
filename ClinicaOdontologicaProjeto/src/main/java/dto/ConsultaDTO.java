@@ -1,5 +1,6 @@
 package dto;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import model.Consulta;
@@ -14,6 +15,7 @@ public class ConsultaDTO extends DTO {
     public RegistroConsultaDTO registroConsulta;
     public Float valor;
     public FormaPagamento formaPagamento;
+    public Date data;
 
     @Override
     public Object builder() {
@@ -23,9 +25,9 @@ public class ConsultaDTO extends DTO {
         consulta.setFuncionario(funcionario.builder());
         consulta.setPaciente(paciente.builder());
         consulta.setValor(valor);
-        consulta.setRegistroConsulta((RegistroConsulta) registroConsulta.builder());
+        //consulta.setRegistroConsulta((RegistroConsulta) registroConsulta.builder());
         consulta.setFormaPagamento(formaPagamento);
-
+        consulta.setDataConsulta(data);
         return consulta;
     }
 
@@ -38,8 +40,10 @@ public class ConsultaDTO extends DTO {
     }
 
     private Object converte(Consulta c) {
+        System.out.println(c.getFuncionario().getId());
         ConsultaDTO dto = new ConsultaDTO();
         dto.id = c.getId();
+        dto.data = c.getDataConsulta();
         dto.observacao = c.getObservacao();
         FuncionarioDTO funcDto = new FuncionarioDTO();
         dto.funcionario = (FuncionarioDTO) funcDto.converte(c.getFuncionario());
@@ -48,7 +52,10 @@ public class ConsultaDTO extends DTO {
         dto.valor = c.getValor();
         dto.formaPagamento = c.getFormaPagamento();
         RegistroConsultaDTO regDto = new RegistroConsultaDTO();
+        regDto.consulta = dto;
+        
         dto.registroConsulta = (RegistroConsultaDTO) regDto.converte(c.getRegistroConsulta());
+       
         return dto;
     }
 }
