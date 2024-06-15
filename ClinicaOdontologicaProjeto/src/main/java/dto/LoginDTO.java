@@ -19,8 +19,8 @@ public class LoginDTO extends DTO {
         login.setFuncionario(funcionario.builder());
         return login;
     }
-    
-     public List getListaDados(List<Login> dados) {
+
+    public List getListaDados(List<Login> dados) {
         List dadosDTO = new LinkedList();
         for (Login dado : dados) {
             dadosDTO.add(converte(dado));
@@ -31,10 +31,16 @@ public class LoginDTO extends DTO {
     public Object converte(Login l) {
         LoginDTO dto = new LoginDTO();
         dto.usuario = l.getUsuario();
-        dto.id = l.getId().toString();
+        dto.id = l.getId();
         dto.senha = l.getSenha();
         FuncionarioDTO funcDto = new FuncionarioDTO();
         dto.funcionario = (FuncionarioDTO) funcDto.converte(l.getFuncionario());
         return dto;
     }
+
+    @Override
+    public String toString() {
+        return "Login [id=" + id + ", usuario=" + usuario + ", senha=" + senha + "]";
+    }
+
 }

@@ -33,7 +33,7 @@ public class AgendamentoDTO extends DTO {
 
     private Object converte(Agendamento a) {
         AgendamentoDTO dto = new AgendamentoDTO();
-        dto.id = a.getId().toString();
+        dto.id = a.getId();
         dto.data = a.getData();
         dto.hora = a.getHora();
         FuncionarioDTO funcDto = new FuncionarioDTO();

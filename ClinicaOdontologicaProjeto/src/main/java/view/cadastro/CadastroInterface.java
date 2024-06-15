@@ -7,10 +7,7 @@ package view.cadastro;
 import dto.DTO;
 import javax.swing.JPanel;
 
-/**
- *
- * @author lavota
- */
+
 public abstract class CadastroInterface extends JPanel {
 
     public abstract DTO salvar();

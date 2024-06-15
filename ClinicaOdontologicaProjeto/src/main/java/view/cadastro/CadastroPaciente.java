@@ -5,6 +5,7 @@ import dto.CidadeDTO;
 import dto.ContatoDTO;
 import dto.DTO;
 import dto.PacienteDTO;
+import dto.ProntuarioDTO;
 import java.util.ArrayList;
 import java.util.List;
 import static model.TipoContato.CELULAR;
@@ -16,9 +17,9 @@ import view.util.Util;
  * @author lavota
  */
 public class CadastroPaciente extends CadastroInterface {
-    
+
     Util util = new Util();
-    
+
     public CadastroPaciente() {
         initComponents();
         util.preencheCombo(comboCidade, new CidadeController());
@@ -29,14 +30,16 @@ public class CadastroPaciente extends CadastroInterface {
     private ContatoDTO dtoContatoEmail;
     private CidadeDTO cidadadeDTO;
     private CidadeController cidadeController;
+    private ProntuarioDTO prontuarioDTO;
     List<ContatoDTO> listaContatos = new ArrayList<>();
 
     @Override
     public DTO salvar() {
-        if (pacienteDTO == null || dtoContatoCelular == null || dtoContatoEmail == null) {
+        if (pacienteDTO == null || dtoContatoCelular == null || dtoContatoEmail == null || prontuarioDTO == null) {
             pacienteDTO = new PacienteDTO();
             dtoContatoCelular = new ContatoDTO();
             dtoContatoEmail = new ContatoDTO();
+            prontuarioDTO = new ProntuarioDTO();
         }
 
         dtoContatoCelular.informacao = fieldCelular.getText();
@@ -47,6 +50,7 @@ public class CadastroPaciente extends CadastroInterface {
         listaContatos.add(dtoContatoEmail);
 
         pacienteDTO.contatos = listaContatos;
+        System.out.println(comboCidade.getSelectedItem());
         pacienteDTO.endereco.idCidade = (Long) comboCidade.getSelectedItem();
         pacienteDTO.numeroCasa = Integer.parseInt(fielNCasa.getText());
         pacienteDTO.endereco.bairro = fieldBairro.getText();
@@ -56,6 +60,10 @@ public class CadastroPaciente extends CadastroInterface {
         pacienteDTO.nome = fieldNome.getText();
         pacienteDTO.responsavel = fieldResponsavel.getText();
         pacienteDTO.endereco.rua = fieldRua.getText();
+
+        prontuarioDTO.paciente = pacienteDTO;
+        
+        pacienteDTO.prontuario = prontuarioDTO;
 
         return pacienteDTO;
     }

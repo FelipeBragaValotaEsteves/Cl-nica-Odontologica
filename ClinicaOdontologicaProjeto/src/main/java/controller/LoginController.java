@@ -11,6 +11,23 @@ public class LoginController implements Controller {
 
     LoginDao dao = new LoginImpl();
 
+    public LoginDTO validaLogin(LoginDTO dto) {
+
+        System.out.println("lOGIN DTO QUE CHEGOU : " + dto.usuario + " - " + dto.senha);
+
+        Login login = (Login) dao.validaLogin(dto.usuario, dto.senha);
+        
+        System.out.println("lOGIN DTO QUE VOLTOU DA VALIDACAO PARA MEU CONTROLLER : " + login);
+
+
+        if (login != null) {
+            LoginDTO loginDto = new LoginDTO();
+            return (LoginDTO) loginDto.converte(login);
+        } else {
+            return null;
+        }
+    }
+
     @Override
     public void salvar(DTO dto) throws Exception {
         LoginDTO loginDTO = (LoginDTO) dto;
@@ -54,7 +71,7 @@ public class LoginController implements Controller {
 
     public boolean validaCampos(LoginDTO login) {
 
-        if (login.usuario == null || login.id.isEmpty()) {
+        if (login.usuario == null) {
             return false;
         }
 

@@ -33,7 +33,7 @@ public class ContatoDTO extends DTO {
 
     private Object converte(Contato c) {
         ContatoDTO dto = new ContatoDTO();
-        dto.id = c.getId().toString();
+        dto.id = c.getId();
         dto.informacao = c.getInformacao();
         dto.idPaciente = c.getPaciente().getId();
         dto.tipoContato = c.getTipoContato();

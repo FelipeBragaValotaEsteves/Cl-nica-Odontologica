@@ -12,10 +12,6 @@ import dto.FuncionarioDTO;
 import dto.PacienteDTO;
 import view.util.Util;
 
-/**
- *
- * @author lavota
- */
 public class CadastroAgendamento extends CadastroInterface{
     
     Util util = new Util();

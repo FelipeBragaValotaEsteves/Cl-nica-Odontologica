@@ -5,8 +5,6 @@ import java.util.List;
 import model.Consulta;
 import model.FormaPagamento;
 import model.RegistroConsulta;
-import persistence.funcionario.FuncionarioImpl;
-import persistence.paciente.PacienteImpl;
 
 public class ConsultaDTO extends DTO {
 
@@ -41,7 +39,7 @@ public class ConsultaDTO extends DTO {
 
     private Object converte(Consulta c) {
         ConsultaDTO dto = new ConsultaDTO();
-        dto.id = c.getId().toString();
+        dto.id = c.getId();
         dto.observacao = c.getObservacao();
         FuncionarioDTO funcDto = new FuncionarioDTO();
         dto.funcionario = (FuncionarioDTO) funcDto.converte(c.getFuncionario());

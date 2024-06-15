@@ -29,7 +29,7 @@ public class ProntuarioDTO extends DTO {
 
     public Object converte(Prontuario p) {
         ProntuarioDTO dto = new ProntuarioDTO();
-        dto.id = p.getId().toString();
+        dto.id = p.getId();
         PacienteDTO pacDto = new PacienteDTO();
         dto.paciente = (PacienteDTO) pacDto.converte(p.getPaciente());
 

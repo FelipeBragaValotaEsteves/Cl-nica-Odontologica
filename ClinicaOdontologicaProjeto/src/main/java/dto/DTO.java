@@ -2,7 +2,8 @@ package dto;
 
 public abstract class DTO {
 
-    public String id;
+    public Long id;
 
     public abstract Object builder();
+    
 }

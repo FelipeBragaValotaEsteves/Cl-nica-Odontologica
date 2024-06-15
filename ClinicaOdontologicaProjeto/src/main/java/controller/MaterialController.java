@@ -48,6 +48,7 @@ public class MaterialController implements Controller {
     @Override
     public List getListaDados() {
         List<Material> dados = dao.listar(Material.class);
+        System.out.println(dados);
         MaterialDTO materialDTO = new MaterialDTO();
         return materialDTO.getListaDados(dados);
     }

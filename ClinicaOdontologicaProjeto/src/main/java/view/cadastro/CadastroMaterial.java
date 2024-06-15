@@ -7,10 +7,6 @@ package view.cadastro;
 import dto.DTO;
 import dto.MaterialDTO;
 
-/**
- *
- * @author lavota
- */
 public class CadastroMaterial extends CadastroInterface {
 
     public CadastroMaterial() {
